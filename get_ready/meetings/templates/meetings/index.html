@@ -1,72 +1,9 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Собирайся!</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
+{% extends 'base.html' %}
 
-        /* Стиль для верхней шапки */
-        .header {
-            position: fixed; /* Фиксируем шапку в верхней части */
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: #4CAF50; /* Зеленый фон */
-            color: white; /* Белый текст */
-            display: flex; /* Используем flexbox для выравнивания элементов */
-            justify-content: space-between; /* Размещаем элементы по краям */
-            align-items: center; /* Выравнивание по центру по вертикали */
-            padding: 10px 20px; /* Внутренние отступы */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Тень под шапкой */
-            z-index: 1000; /* Убедимся, что шапка выше остальных элементов */
-        }
-
-        /* Стиль для кнопок */
-        .header button {
-            background-color: #fff; /* Белый фон кнопок */
-            color: #4CAF50; /* Зеленый текст */
-            border: none; /* Убираем рамку */
-            padding: 10px 15px; /* Внутренние отступы кнопок */
-            border-radius: 5px; /* Скругленные углы */
-            cursor: pointer; /* Указатель при наведении */
-            transition: background-color 0.3s; /* Плавный переход фона */
-        }
-
-        /* Эффект при наведении на кнопки */
-        .header button:hover {
-            background-color: #f1f1f1; /* Светло-серый фон при наведении */
-        }
-
-        /* Контент страницы */
-        .content {
-            margin-top: 70px; /* Отступ сверху, чтобы контент не загораживался шапкой */
-            padding: 20px; /* Внутренние отступы контента */
-        }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <div class="site-name">Собирайся!</div>
-        <div class="nav-buttons">
-            <button>Предложить встречу</button>
-            <button>Чекнуть встречи</button>
-        </div>
-        <div class="auth-buttons">
-            <button>Вход</button>
-            <button>Регистрация</button>
-        </div>
-    </div>
-
+{% block content %}
     <div class="content">
         <h1>Добро пожаловать на сайт Собирайся!</h1>
         <p>Здесь вы можете предложить встречи и проверять уже запланированные мероприятия cо своими друзьями.</p>
         <p>Скоро ниже будет больше информации.</p>
-        <!-- Дополнительный контент -->
+{% endblock %}
     </div>
-</body>
-</html>
