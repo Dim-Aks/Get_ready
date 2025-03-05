@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8b90fba-7a5d-41ae-b99a-82fa1fce3dc9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/get_ready/meetings/static/meetings/css/style.css" afterDir="false" />
+    <list default="true" id="f8b90fba-7a5d-41ae-b99a-82fa1fce3dc9" name="Changes" comment="Внесены изменения в цветовую стилистику сайта (изменили на фиолетовую)">
+      <change afterPath="$PROJECT_DIR$/get_ready/users/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/get_ready/get_ready/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/get_ready/get_ready/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/get_ready/meetings/templates/meetings/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/get_ready/meetings/templates/meetings/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_ready/get_ready/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/get_ready/get_ready/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_ready/meetings/static/meetings/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/get_ready/meetings/static/meetings/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/get_ready/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/get_ready/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="test" />
+        <entry key="$PROJECT_DIR$" value="05_date" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -139,7 +139,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741110649996</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Внесены изменения в цветовую стилистику сайта (изменили на фиолетовую)">
+      <option name="closed" value="true" />
+      <created>1741184298636</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1741184298636</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -158,6 +166,7 @@
     <MESSAGE value="'Положено начало проекту: создана заглавная страница с некоторым наполнением и кнопками в топ-баре'" />
     <MESSAGE value="Созданы: админ панель и суперпользователь, создана таблица в бд для хранения данных по встречам" />
     <MESSAGE value="РешалЫ" />
-    <option name="LAST_COMMIT_MESSAGE" value="РешалЫ" />
+    <MESSAGE value="Внесены изменения в цветовую стилистику сайта (изменили на фиолетовую)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Внесены изменения в цветовую стилистику сайта (изменили на фиолетовую)" />
   </component>
 </project>

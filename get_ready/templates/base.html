@@ -7,67 +7,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Собирайся!</title>
-
-    <style>
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        /* Стиль для верхней шапки */
-        .header {
-            position: fixed; /* Фиксируем шапку в верхней части */
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: #8A2BE2; /* Фиолетовый фон */
-            color: white; /* Белый текст */
-            display: flex; /* Используем flexbox для выравнивания элементов */
-            justify-content: space-between; /* Размещаем элементы по краям */
-            align-items: center; /* Выравнивание по центру по вертикали */
-            padding: 11px 20px; /* Внутренние отступы */
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Тень под шапкой */
-            z-index: 1000; /* Убедимся, что шапка выше остальных элементов */
-        }
-
-        /* Стиль для кнопок */
-        .header a {
-            background-color: #fff; /* Белый фон кнопок */
-            color: #8A2BE2; /* Фиолетовый текст */
-            border: none; /* Убираем рамку */
-            padding: 10px 15px; /* Внутренние отступы кнопок */
-            border-radius: 5px; /* Скругленные углы */
-            cursor: pointer; /* Указатель при наведении */
-            transition: background-color 0.3s; /* Плавный переход фона */
-            text-decoration: none;
-        }
-
-        /* Стиль кнопки сайта */
-        #home {
-            background-color: #8A2BE2; /* Фиолетовый фон кнопки */
-            color: #fff; /* Белый текст */
-            text-decoration: none;
-            display: inline-block;
-            transition: transform 0.3s ease;
-            font-size: 20px;
-        }
-
-        .home-button:hover {
-          transform: scale(1.2); /* Увеличение на 10% при наведении */
-        }
-
-        /* Эффект при наведении на кнопки */
-        .header a:hover {
-            background-color: #FFF0F5; /* Светло-серый фон при наведении */
-        }
-
-        /* Контент страницы */
-        .content {
-            margin-top: 70px; /* Отступ сверху, чтобы контент не загораживался шапкой */
-            padding: 20px; /* Внутренние отступы контента */
-        }
-    </style>
 </head>
 <body>
     <div class="header">
