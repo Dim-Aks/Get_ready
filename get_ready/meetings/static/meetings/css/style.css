@@ -1,0 +1,6 @@
+    body {
+        background: radial-gradient(ellipse, #C8B6E2, #9370DB); /* Лавандовый -> Светло-сливовый */
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+    }

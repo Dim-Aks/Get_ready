@@ -3,10 +3,13 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'meetings/css/style.css' %}"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Собирайся!</title>
+
     <style>
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -18,7 +21,7 @@
             top: 0;
             left: 0;
             right: 0;
-            background-color: #4CAF50; /* Зеленый фон */
+            background-color: #8A2BE2; /* Фиолетовый фон */
             color: white; /* Белый текст */
             display: flex; /* Используем flexbox для выравнивания элементов */
             justify-content: space-between; /* Размещаем элементы по краям */
@@ -31,7 +34,7 @@
         /* Стиль для кнопок */
         .header a {
             background-color: #fff; /* Белый фон кнопок */
-            color: #4CAF50; /* Зеленый текст */
+            color: #8A2BE2; /* Фиолетовый текст */
             border: none; /* Убираем рамку */
             padding: 10px 15px; /* Внутренние отступы кнопок */
             border-radius: 5px; /* Скругленные углы */
@@ -42,7 +45,7 @@
 
         /* Стиль кнопки сайта */
         #home {
-            background-color: #4CAF50; /* Зелёный фон кнопки */
+            background-color: #8A2BE2; /* Фиолетовый фон кнопки */
             color: #fff; /* Белый текст */
             text-decoration: none;
             display: inline-block;
@@ -56,7 +59,7 @@
 
         /* Эффект при наведении на кнопки */
         .header a:hover {
-            background-color: #f1f1f1; /* Светло-серый фон при наведении */
+            background-color: #FFF0F5; /* Светло-серый фон при наведении */
         }
 
         /* Контент страницы */

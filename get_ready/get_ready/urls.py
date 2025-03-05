@@ -6,4 +6,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-admin.site.site_header = "Панель решалЫ"
+admin.site.site_header = "Панель решалы"
