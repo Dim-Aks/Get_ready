@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8b90fba-7a5d-41ae-b99a-82fa1fce3dc9" name="Changes" comment="Внесены изменения в цветовую стилистику сайта (изменили на фиолетовую)">
-      <change afterPath="$PROJECT_DIR$/get_ready/users/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/get_ready/users/static/users/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/get_ready/users/templates/users/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/get_ready/users/templates/users/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/get_ready/get_ready/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/get_ready/get_ready/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_ready/get_ready/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/get_ready/get_ready/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/get_ready/meetings/static/meetings/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/get_ready/meetings/static/meetings/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_ready/meetings/templates/meetings/check.html" beforeDir="false" afterPath="$PROJECT_DIR$/get_ready/meetings/templates/meetings/check.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_ready/meetings/templates/meetings/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/get_ready/meetings/templates/meetings/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_ready/meetings/templates/meetings/suggest_an_appointment.html" beforeDir="false" afterPath="$PROJECT_DIR$/get_ready/meetings/templates/meetings/suggest_an_appointment.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/get_ready/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/get_ready/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_ready/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/get_ready/users/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,9 +31,10 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <branch-grouping />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="05_date" />
+        <entry key="$PROJECT_DIR$" value="06" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -147,7 +154,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741184298636</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Внесены изменения в цветовую стилистику сайта (изменили на фиолетовую)">
+      <option name="closed" value="true" />
+      <created>1741193046717</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1741193046717</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

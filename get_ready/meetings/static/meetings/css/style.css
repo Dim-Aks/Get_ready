@@ -1,5 +1,5 @@
     body {
-        background: radial-gradient(ellipse, #C8B6E2, #9370DB); /* Фиолетовый -> Светло-фиолетовый */
+        background: radial-gradient(ellipse, #A084CA, #9370DB); /* Фиолетовый -> Светло-фиолетовый */
         margin: 0;
         font-family: Arial, sans-serif;
         height: 100vh;
@@ -12,7 +12,7 @@
             top: 0;
             left: 0;
             right: 0;
-            background-color: #8A2BE2; /* Фиолетовый фон */
+            background-color: #645CAA; /* Фиолетовый фон */
             color: white; /* Белый текст */
             display: flex; /* Используем flexbox для выравнивания элементов */
             justify-content: space-between; /* Размещаем элементы по краям */
@@ -24,8 +24,8 @@
 
         /* Стиль для кнопок */
         .header a {
-            background-color: #fff; /* Белый фон кнопок */
-            color: #8A2BE2; /* Фиолетовый текст */
+            background-color: #fff; /* Белый фон кнопок  */
+            color: #645CAA; /* Фиолетовый текст */
             border: none; /* Убираем рамку */
             padding: 10px 15px; /* Внутренние отступы кнопок */
             border-radius: 5px; /* Скругленные углы */
@@ -36,7 +36,7 @@
 
         /* Стиль кнопки сайта */
         #home {
-            background-color: #8A2BE2; /* Фиолетовый фон кнопки */
+            background-color: #645CAA; /* Фиолетовый фон кнопки */
             color: #fff; /* Белый текст */
             text-decoration: none;
             display: inline-block;
@@ -44,13 +44,14 @@
             font-size: 20px;
         }
 
+        /* увеличения кнопки домой при наведении */
         .home-button:hover {
           transform: scale(1.2); /* Увеличение на 10% при наведении */
         }
 
         /* Эффект при наведении на кнопки */
         .header a:hover {
-            background-color: #FFF0F5; /* Светло-серый фон при наведении */
+            background-color: #BFACE0; /* Светло-Фиолетовый фон при наведении */
         }
 
         /* Контент страницы */

@@ -1,0 +1,89 @@
+body {
+    background: radial-gradient(ellipse, #A084CA, #9370DB); /* Фиолетовый -> Светло-фиолетовый */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Стиль кнопки сайта */
+#home {
+    padding: 11px 20px; /* Внутренние отступы */
+    color: #fff; /* Белый текст */
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 20px;
+}
+
+.home-button:hover {
+  transform: scale(1.2); /* Увеличение на 10% при наведении */
+}
+
+/* разметка страницы для формы */
+.container {
+    width: 100vw;
+    height: 100vh;
+
+    display: grid;
+    grid-template-columns: 40vw 40 vw 30 vw;
+}
+
+/* Форма для логина */
+.form-login {
+    margin: auto; /* по середине */
+    padding: 43px 33px; /* размер рамки */
+    font-size: 20px;
+    }
+
+.input-block {
+       margin-bottom: 1rem;
+}
+
+.input-block > label, .input-block > input {
+    width: 100%;
+}
+
+/* поля вода логина и пароля */
+input {
+    font-size: 20px;
+    outline: none;
+    border: 1px solid EBC7E8;
+    border-radius: 5px;
+    padding: 0.2rem 0.5rem;
+    background-color: inherit; /* прозрачные поля логина и пароля */
+    font-weight: 600;
+    width: 50%;
+    font-style: normal;
+    font-weight: 300;
+}
+
+/* центрирование кнопки войти */
+.button-block {
+    text-align: center;
+}
+
+/* при выборе поля появляется вокруг ареол
+input:focus {
+    -webkit-box-shadow: 0px 0px  20px 20px rgba(145, 107, 180, 0.61);
+    -moz-box-shadow: 0px 0px  20px 20px rgba(145, 107, 180, 0.61);
+    box-shadow: 0px 0px  20px 20px rgba(145, 107, 180, 0.61);
+}*/
+
+/* кнопка войти */
+button {
+    font-size: 20px;
+    outline: none;
+    border: 1px solid EBC7E8;
+    border-radius: 5px;
+    padding: 0.2rem 0.5rem;
+    background-color: inherit; /* прозрачные поля */
+    cursor: pointer;
+    font-weight: 500;
+    width: 45%;
+}
+
+/* кнопка Войти при наведении меняет цвет */
+button:hover {
+    background-color: #BFACE0;
+}
