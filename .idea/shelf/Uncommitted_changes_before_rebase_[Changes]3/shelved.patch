@@ -1,0 +1,223 @@
+Index: get_ready/meetings/static/meetings/css/style.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>    body {\r\n        background: radial-gradient(ellipse, #C8B6E2, #9370DB); /* Лавандовый -> Светло-сливовый */\r\n        margin: 0;\r\n        height: 100vh;\r\n        overflow: hidden;\r\n    }
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/get_ready/meetings/static/meetings/css/style.css b/get_ready/meetings/static/meetings/css/style.css
+--- a/get_ready/meetings/static/meetings/css/style.css	(revision ed4ef64b50f7a3ee7c3e961f42f1c33a0c364d00)
++++ b/get_ready/meetings/static/meetings/css/style.css	(date 1741184825535)
+@@ -1,6 +1,60 @@
+     body {
+-        background: radial-gradient(ellipse, #C8B6E2, #9370DB); /* Лавандовый -> Светло-сливовый */
++        background: radial-gradient(ellipse, #C8B6E2, #9370DB); /* Фиолетовый -> Светло-фиолетовый */
+         margin: 0;
++        font-family: Arial, sans-serif;
+         height: 100vh;
+         overflow: hidden;
+-    }
+\ No newline at end of file
++    }
++
++        /* Стиль для верхней шапки */
++        .header {
++            position: fixed; /* Фиксируем шапку в верхней части */
++            top: 0;
++            left: 0;
++            right: 0;
++            background-color: #8A2BE2; /* Фиолетовый фон */
++            color: white; /* Белый текст */
++            display: flex; /* Используем flexbox для выравнивания элементов */
++            justify-content: space-between; /* Размещаем элементы по краям */
++            align-items: center; /* Выравнивание по центру по вертикали */
++            padding: 11px 20px; /* Внутренние отступы */
++            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Тень под шапкой */
++            z-index: 1000; /* Убедимся, что шапка выше остальных элементов */
++        }
++
++        /* Стиль для кнопок */
++        .header a {
++            background-color: #fff; /* Белый фон кнопок */
++            color: #8A2BE2; /* Фиолетовый текст */
++            border: none; /* Убираем рамку */
++            padding: 10px 15px; /* Внутренние отступы кнопок */
++            border-radius: 5px; /* Скругленные углы */
++            cursor: pointer; /* Указатель при наведении */
++            transition: background-color 0.3s; /* Плавный переход фона */
++            text-decoration: none;
++        }
++
++        /* Стиль кнопки сайта */
++        #home {
++            background-color: #8A2BE2; /* Фиолетовый фон кнопки */
++            color: #fff; /* Белый текст */
++            text-decoration: none;
++            display: inline-block;
++            transition: transform 0.3s ease;
++            font-size: 20px;
++        }
++
++        .home-button:hover {
++          transform: scale(1.2); /* Увеличение на 10% при наведении */
++        }
++
++        /* Эффект при наведении на кнопки */
++        .header a:hover {
++            background-color: #FFF0F5; /* Светло-серый фон при наведении */
++        }
++
++        /* Контент страницы */
++        .content {
++            margin-top: 70px; /* Отступ сверху, чтобы контент не загораживался шапкой */
++            padding: 20px; /* Внутренние отступы контента */
++        }
+\ No newline at end of file
+Index: get_ready/templates/base.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{% load static %}\r\n\r\n<!DOCTYPE html>\r\n<html lang=\"ru\">\r\n<head>\r\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"{% static 'meetings/css/style.css' %}\"/>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Собирайся!</title>\r\n\r\n    <style>\r\n\r\n        body {\r\n            margin: 0;\r\n            font-family: Arial, sans-serif;\r\n        }\r\n\r\n        /* Стиль для верхней шапки */\r\n        .header {\r\n            position: fixed; /* Фиксируем шапку в верхней части */\r\n            top: 0;\r\n            left: 0;\r\n            right: 0;\r\n            background-color: #8A2BE2; /* Фиолетовый фон */\r\n            color: white; /* Белый текст */\r\n            display: flex; /* Используем flexbox для выравнивания элементов */\r\n            justify-content: space-between; /* Размещаем элементы по краям */\r\n            align-items: center; /* Выравнивание по центру по вертикали */\r\n            padding: 11px 20px; /* Внутренние отступы */\r\n            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Тень под шапкой */\r\n            z-index: 1000; /* Убедимся, что шапка выше остальных элементов */\r\n        }\r\n\r\n        /* Стиль для кнопок */\r\n        .header a {\r\n            background-color: #fff; /* Белый фон кнопок */\r\n            color: #8A2BE2; /* Фиолетовый текст */\r\n            border: none; /* Убираем рамку */\r\n            padding: 10px 15px; /* Внутренние отступы кнопок */\r\n            border-radius: 5px; /* Скругленные углы */\r\n            cursor: pointer; /* Указатель при наведении */\r\n            transition: background-color 0.3s; /* Плавный переход фона */\r\n            text-decoration: none;\r\n        }\r\n\r\n        /* Стиль кнопки сайта */\r\n        #home {\r\n            background-color: #8A2BE2; /* Фиолетовый фон кнопки */\r\n            color: #fff; /* Белый текст */\r\n            text-decoration: none;\r\n            display: inline-block;\r\n            transition: transform 0.3s ease;\r\n            font-size: 20px;\r\n        }\r\n\r\n        .home-button:hover {\r\n          transform: scale(1.2); /* Увеличение на 10% при наведении */\r\n        }\r\n\r\n        /* Эффект при наведении на кнопки */\r\n        .header a:hover {\r\n            background-color: #FFF0F5; /* Светло-серый фон при наведении */\r\n        }\r\n\r\n        /* Контент страницы */\r\n        .content {\r\n            margin-top: 70px; /* Отступ сверху, чтобы контент не загораживался шапкой */\r\n            padding: 20px; /* Внутренние отступы контента */\r\n        }\r\n    </style>\r\n</head>\r\n<body>\r\n    <div class=\"header\">\r\n        <div class=\"btn site-name\"><a id=\"home\" href=\"{% url 'home' %}\" class=\"home-button\">Собирайся!</a></div>\r\n        <div class=\"nav-buttons\">\r\n            <a class=\"btn btn-primary\" href=\"{% url 'suggest' %}\">Предложить встречу</a>\r\n            <a class=\"btn btn-primary\" href=\"{% url 'check' %}\">Чекнуть встречи</a>\r\n        </div>\r\n        <div class=\"auth-buttons\">\r\n            <a class=\"btn btn-primary\" href=\"\">Вход</a>\r\n            <a class=\"btn btn-primary\" href=\"\">Регистрация</a>\r\n        </div>\r\n    </div>\r\n<!-- Блок контента -->\r\n\t<div class=\"content-text\">\r\n{% block content %}\r\n{% endblock %}\r\n\t</div>\r\n<!-- Конец блока контента -->\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/get_ready/templates/base.html b/get_ready/templates/base.html
+--- a/get_ready/templates/base.html	(revision ed4ef64b50f7a3ee7c3e961f42f1c33a0c364d00)
++++ b/get_ready/templates/base.html	(date 1741184825537)
+@@ -7,67 +7,6 @@
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Собирайся!</title>
+-
+-    <style>
+-
+-        body {
+-            margin: 0;
+-            font-family: Arial, sans-serif;
+-        }
+-
+-        /* Стиль для верхней шапки */
+-        .header {
+-            position: fixed; /* Фиксируем шапку в верхней части */
+-            top: 0;
+-            left: 0;
+-            right: 0;
+-            background-color: #8A2BE2; /* Фиолетовый фон */
+-            color: white; /* Белый текст */
+-            display: flex; /* Используем flexbox для выравнивания элементов */
+-            justify-content: space-between; /* Размещаем элементы по краям */
+-            align-items: center; /* Выравнивание по центру по вертикали */
+-            padding: 11px 20px; /* Внутренние отступы */
+-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Тень под шапкой */
+-            z-index: 1000; /* Убедимся, что шапка выше остальных элементов */
+-        }
+-
+-        /* Стиль для кнопок */
+-        .header a {
+-            background-color: #fff; /* Белый фон кнопок */
+-            color: #8A2BE2; /* Фиолетовый текст */
+-            border: none; /* Убираем рамку */
+-            padding: 10px 15px; /* Внутренние отступы кнопок */
+-            border-radius: 5px; /* Скругленные углы */
+-            cursor: pointer; /* Указатель при наведении */
+-            transition: background-color 0.3s; /* Плавный переход фона */
+-            text-decoration: none;
+-        }
+-
+-        /* Стиль кнопки сайта */
+-        #home {
+-            background-color: #8A2BE2; /* Фиолетовый фон кнопки */
+-            color: #fff; /* Белый текст */
+-            text-decoration: none;
+-            display: inline-block;
+-            transition: transform 0.3s ease;
+-            font-size: 20px;
+-        }
+-
+-        .home-button:hover {
+-          transform: scale(1.2); /* Увеличение на 10% при наведении */
+-        }
+-
+-        /* Эффект при наведении на кнопки */
+-        .header a:hover {
+-            background-color: #FFF0F5; /* Светло-серый фон при наведении */
+-        }
+-
+-        /* Контент страницы */
+-        .content {
+-            margin-top: 70px; /* Отступ сверху, чтобы контент не загораживался шапкой */
+-            padding: 20px; /* Внутренние отступы контента */
+-        }
+-    </style>
+ </head>
+ <body>
+     <div class="header">
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"f8b90fba-7a5d-41ae-b99a-82fa1fce3dc9\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/get_ready/meetings/static/meetings/css/style.css\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/get_ready/get_ready/urls.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/get_ready/get_ready/urls.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/get_ready/meetings/templates/meetings/index.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/get_ready/meetings/templates/meetings/index.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/get_ready/templates/base.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/get_ready/templates/base.html\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"HTML File\" />\r\n        <option value=\"Python Script\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"test\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GithubDefaultAccount\">\r\n    <option name=\"defaultAccountId\" value=\"3fdb7ec6-41ec-467f-8333-ecb032f8a26a\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 6\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2td2JbnyoLs9Hf4jRxN3GQrsQRc\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"DefaultHtmlFileTemplate\": \"HTML File\",\r\n    \"Python.Start server.executor\": \"Run\",\r\n    \"Python.get_ready.executor\": \"Run\",\r\n    \"Python.views.executor\": \"Run\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.git.unshallow\": \"true\",\r\n    \"Shell Script.Start_server.executor\": \"Run\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"last_opened_file_path\": \"E:/MyPythonProjects/Get_ready_project/get_ready\",\r\n    \"settings.editor.selected.configurable\": \"org.jetbrains.plugins.github.ui.GithubSettingsConfigurable\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"E:\\MyPythonProjects\\Get_ready_project\\get_ready\\templates\" />\r\n      <recent name=\"E:\\MyPythonProjects\\Get_ready_project\\get_ready\\templates\\get_ready\" />\r\n      <recent name=\"E:\\MyPythonProjects\\Get_ready_project\\get_ready\\meetings\\templates\\meetings\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"get_ready\" type=\"PythonConfigurationType\" factoryName=\"Python\">\r\n      <module name=\"Get_ready!_project\" />\r\n      <option name=\"ENV_FILES\" value=\"\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"SDK_NAME\" value=\"Python 3.13 virtualenv at E:\\MyPythonProjects\\Get_ready_project\\.venv\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"E:\\MyPythonProjects\\Get_ready_project\\get_ready\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/get_ready/manage.py\" />\r\n      <option name=\"PARAMETERS\" value=\"runserver\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-python-sdk-fc1d50d2d915-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.24978.54\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"f8b90fba-7a5d-41ae-b99a-82fa1fce3dc9\" name=\"Changes\" comment=\"\" />\r\n      <created>1740667560644</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1740667560644</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"'Положено начало проекту: создана заглавная страница с некоторым наполнением и кнопками в топ-баре'\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1740674640053</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1740674640053</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"'Положено начало проекту: создана заглавная страница с некоторым наполнением и кнопками в топ-баре'\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1740674651044</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1740674651044</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Созданы: админ панель и суперпользователь, создана таблица в бд для хранения данных по встречам\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1741110207307</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1741110207307</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"РешалЫ\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1741110649996</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1741110649996</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"5\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT\" value=\"true\" />\r\n    <MESSAGE value=\"'Положено начало проекту: создана заглавная страница с некоторым наполнением и кнопками в топ-баре'\" />\r\n    <MESSAGE value=\"Созданы: админ панель и суперпользователь, создана таблица в бд для хранения данных по встречам\" />\r\n    <MESSAGE value=\"РешалЫ\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"РешалЫ\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision ed4ef64b50f7a3ee7c3e961f42f1c33a0c364d00)
++++ b/.idea/workspace.xml	(date 1741184825533)
+@@ -4,13 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="f8b90fba-7a5d-41ae-b99a-82fa1fce3dc9" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/get_ready/meetings/static/meetings/css/style.css" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/get_ready/get_ready/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/get_ready/get_ready/urls.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/get_ready/meetings/templates/meetings/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/get_ready/meetings/templates/meetings/index.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/get_ready/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/get_ready/templates/base.html" afterDir="false" />
+-    </list>
++    <list default="true" id="f8b90fba-7a5d-41ae-b99a-82fa1fce3dc9" name="Changes" comment="Внесены изменения в цветовую стилистику сайта (изменили на фиолетовую)" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -27,7 +21,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="test" />
++        <entry key="$PROJECT_DIR$" value="main" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -54,7 +48,7 @@
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "RunOnceActivity.git.unshallow": "true",
+     "Shell Script.Start_server.executor": "Run",
+-    "git-widget-placeholder": "main",
++    "git-widget-placeholder": "05__date",
+     "last_opened_file_path": "E:/MyPythonProjects/Get_ready_project/get_ready",
+     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
+   }
+@@ -139,7 +133,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1741110649996</updated>
+     </task>
+-    <option name="localTasksCounter" value="5" />
++    <task id="LOCAL-00005" summary="Внесены изменения в цветовую стилистику сайта (изменили на фиолетовую)">
++      <option name="closed" value="true" />
++      <created>1741184298636</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1741184298636</updated>
++    </task>
++    <option name="localTasksCounter" value="6" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -158,6 +160,7 @@
+     <MESSAGE value="'Положено начало проекту: создана заглавная страница с некоторым наполнением и кнопками в топ-баре'" />
+     <MESSAGE value="Созданы: админ панель и суперпользователь, создана таблица в бд для хранения данных по встречам" />
+     <MESSAGE value="РешалЫ" />
+-    <option name="LAST_COMMIT_MESSAGE" value="РешалЫ" />
++    <MESSAGE value="Внесены изменения в цветовую стилистику сайта (изменили на фиолетовую)" />
++    <option name="LAST_COMMIT_MESSAGE" value="Внесены изменения в цветовую стилистику сайта (изменили на фиолетовую)" />
+   </component>
+ </project>
+\ No newline at end of file
