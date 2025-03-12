@@ -23,10 +23,10 @@ body {
 /* разметка страницы для формы */
 .container {
     width: 100vw;
-    height: 100vh;
+    height: 60vh;
 
     display: grid;
-    grid-template-columns: 40vw 40 vw 30 vw;
+    grid-template-columns: 30vw 40vw 30vw;
 }
 
 /* Форма для логина */
@@ -52,23 +52,21 @@ input {
     border-radius: 5px;
     padding: 0.2rem 0.5rem;
     background-color: inherit; /* прозрачные поля логина и пароля */
-    font-weight: 600;
-    width: 50%;
+    width: 100%; /* ширина полей ввода */
     font-style: normal;
     font-weight: 300;
 }
 
-/* центрирование кнопки войти */
+/* подписи над полями ввода */
+label {
+    display: block; /* Размещает подпись над полем ввода */
+    margin-bottom: 5px; /* Добавляет небольшой отступ между подписью и полем ввода */
+  }
+
+/* центрирование кнопки войти/ регистрация */
 .button-block {
     text-align: center;
 }
-
-/* при выборе поля появляется вокруг ареол
-input:focus {
-    -webkit-box-shadow: 0px 0px  20px 20px rgba(145, 107, 180, 0.61);
-    -moz-box-shadow: 0px 0px  20px 20px rgba(145, 107, 180, 0.61);
-    box-shadow: 0px 0px  20px 20px rgba(145, 107, 180, 0.61);
-}*/
 
 /* кнопка войти */
 button {
@@ -80,7 +78,7 @@ button {
     background-color: inherit; /* прозрачные поля */
     cursor: pointer;
     font-weight: 500;
-    width: 45%;
+    width: 50%;
 }
 
 /* кнопка Войти при наведении меняет цвет */
