@@ -2,44 +2,41 @@
 
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-    <link rel="stylesheet" type="text/css" href="{% static 'users/css/login.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'users/css/login.css' %}" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Авторизация</title>
     <div class="header">
-    <div class="btn site-name"><a id="home" href="{% url 'home' %}" class="home-button">Собирайся!</a>
-    </div></div>
+        <div class="btn site-name"><a id="home" href="{% url 'home' %}" class="home-button">Собирайся!</a>
+        </div>
+    </div>
 </head>
+
 <body>
     <div class="container">
-       <div class="filler"></div>
+        <div class="filler"></div>
         <div class="form-login">
             <form method="POST">
                 {% csrf_token %}
                 <div class="input-block">
                     <div class="form-error">{{ form.non_field_errors }}</div>
 
+                    <!--  Сохраняет название страницы, куда нужно будет вернуться -->
+                    <input type="hidden" name="next" value="{{ next }}" />
+
                     {% for f in form %}
-                    <p ><label class="form-label" for="{{ f.id_for_label }}">{{f.label}} </label>{{ f }}</p>
+                    <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}} </label>{{ f }}</p>
                     <div class="form-error">{{ f.errors }}</div>
                     {% endfor %}
-
-                    <!-- <label for="username">Логин</label>
-                    <input id='username' type="text" name="username">
-                </div>
-                <div class="input-block">
-                    <label for="password">Пароль</label>
-                    <input id='password' type="password" name="password"> -->
-
                 </div>
                 <div class="button-block">
                     <button>Войти</button>
                 </div>
             </form>
         </div>
-       <div class="filler"></div>
+        <div class="filler"></div>
     </div>
+
 </html>
-
-
