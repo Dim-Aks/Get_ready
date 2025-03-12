@@ -5,9 +5,6 @@ from django.views.generic import CreateView
 #from get_ready.meetings.models import Meeting
 
 
-def index(requests):
-    return render(requests, 'meetings/index.html')
-
 def create_suggest(requests):
     # error = ''
     # if requests.method == 'POST':
@@ -23,5 +20,3 @@ def create_suggest(requests):
     #        'error': error}
     return render(requests, 'meetings/suggest_an_appointment.html')
 
-def check(requests):
-    return render(requests, 'meetings/check.html')
