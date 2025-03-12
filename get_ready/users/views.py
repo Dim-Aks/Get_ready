@@ -19,6 +19,3 @@ def logout_user(request):
     logout(request)
     return redirect('home')
 
-def register(request):
-    return render(request, 'users/register.html')
-
