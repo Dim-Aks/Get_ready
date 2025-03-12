@@ -1,18 +1,13 @@
+from multiprocessing import AuthenticationError
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView
 
-
-def login_user(request):
-    if request.method == 'POST':
-        username = request.POST["login"]
-        password = request.POST["password"]
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('home')
-        else:
-            return render(request, 'users/login.html')
-    return render(request, 'users/login.html')
+class LoginUser(LoginView):
+    form_class = AuthenticationForm
+    template_name = 'users/login.html'
+    extra_context = {'title': 'Авторизация'}
 
 
 def logout_user(request):
