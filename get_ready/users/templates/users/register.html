@@ -17,7 +17,22 @@
         <div class="form-login">
             <form method="POST">
                 {% csrf_token %}
+
+                <!--  Сохраняет название страницы, куда нужно будет вернуться -->     
+                <input type="hidden" name="next" value="{{ next }}" />
+
+                <!-- Общие ошибки формы (например, неверный пароль) -->
+                <div class="form-error">{{ form.non_field_errors }}</div>
+
+                {% for f in form %}
                 <div class="input-block">
+                    <label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>
+                    {{ f }} <!-- Это заменит <input> -->
+                    <div class="form-error">{{ f.errors }}</div> <!-- Блок ошибок для поля -->
+                </div>
+                {% endfor %}
+
+                <!-- <div class="input-block">
                     <label for="login">Логин</label>
                     <input id='login' type="text" name="login">
                 </div>
@@ -28,9 +43,10 @@
                 <div class="input-block">
                     <label for="password2">Повторите пароль</label>
                     <input id='password2' type="password" name="password2">
-                </div>
+                </div>-->
+
                 <div class="button-block">
-                    <button>Регистрация</button>
+                    <button type="submit">Регистрация</button>
                 </div>
             </form>
         </div>

@@ -24,7 +24,6 @@ body {
 .container {
     width: 100vw;
     height: 60vh;
-
     display: grid;
     grid-template-columns: 30vw 40vw 30vw;
 }
@@ -58,30 +57,65 @@ input {
 }
 
 /* подписи над полями ввода */
-label {
-    display: block; /* Размещает подпись над полем ввода */
-    margin-bottom: 5px; /* Добавляет небольшой отступ между подписью и полем ввода */
-  }
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    width: 100%;
+}
 
 /* центрирование кнопки войти/ регистрация */
 .button-block {
     text-align: center;
+    margin-top: 1.5rem; /* отступ сверху */
 }
 
-/* кнопка войти */
+/* Общие стили для всех полей ввода */
+.input-block input,
+.input-block select,
+.input-block textarea {
+    font-size: 20px;
+    outline: none;  
+    border-radius: 5px;
+    padding: 0.2rem 0.5rem;
+    background-color: inherit; /* Прозрачное поле */
+    width: 100%;
+    font-weight: 300;
+    box-sizing: border-box; /* Чтобы padding не влиял на ширину */
+}
+
+/* Стили для ошибок */
+.form-error {
+    color: #0e0d0d;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.form-error ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+/* кнопка войти, регистрация */
 button {
     font-size: 20px;
     outline: none;
     border: 1px solid EBC7E8;
     border-radius: 5px;
-    padding: 0.2rem 0.5rem;
+    padding: 0.2rem 0.5rem; 
     background-color: inherit; /* прозрачные поля */
     cursor: pointer;
     font-weight: 500;
-    width: 50%;
+    width: 60%;
+    transition: background-color 0.3s ease;
 }
 
 /* кнопка Войти при наведении меняет цвет */
 button:hover {
     background-color: #BFACE0;
+}
+
+/* Стиль для скрытого поля next */
+input[type="hidden"] {
+    display: none;
 }
