@@ -1,61 +1,124 @@
-    body {
-        background: radial-gradient(ellipse, #A084CA, #9370DB); /* Фиолетовый -> Светло-фиолетовый */
-        margin: 0;
-        font-family: Arial, sans-serif;
-        height: 100vh;
-        overflow: hidden;
-    }
+body {
+    background: radial-gradient(ellipse, #A084CA, #9370DB); /* Фиолетовый -> Светло-фиолетовый */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
 
-        /* Стиль для верхней шапки */
-        .header {
-            position: fixed; /* Фиксируем шапку в верхней части */
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: #645CAA; /* Фиолетовый фон */
-            color: white; /* Белый текст */
-            display: flex; /* Используем flexbox для выравнивания элементов */
-            justify-content: space-between; /* Размещаем элементы по краям */
-            align-items: center; /* Выравнивание по центру по вертикали */
-            padding: 11px 20px; /* Внутренние отступы */
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Тень под шапкой */
-            z-index: 1000; /* Убедимся, что шапка выше остальных элементов */
-        }
+/* Стиль для верхней шапки */
+.header {
+    position: fixed; /* Фиксируем шапку в верхней части */
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #645CAA; /* Фиолетовый фон */
+    color: white; /* Белый текст */
+    display: flex; /* Используем flexbox для выравнивания элементов */
+    justify-content: space-between; /* Размещаем элементы по краям */
+    align-items: center; /* Выравнивание по центру по вертикали */
+    padding: 11px 20px; /* Внутренние отступы */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Тень под шапкой */
+    z-index: 1000; /* Убедимся, что шапка выше остальных элементов */
+}
 
-        /* Стиль для кнопок */
-        .header a {
-            background-color: #fff; /* Белый фон кнопок  */
-            color: #645CAA; /* Фиолетовый текст */
-            border: none; /* Убираем рамку */
-            padding: 10px 15px; /* Внутренние отступы кнопок */
-            border-radius: 5px; /* Скругленные углы */
-            cursor: pointer; /* Указатель при наведении */
-            transition: background-color 0.3s; /* Плавный переход фона */
-            text-decoration: none;
-        }
+/* Стиль для кнопок */
+.header a {
+    background-color: #fff; /* Белый фон кнопок  */
+    color: #645CAA; /* Фиолетовый текст */
+    border: none; /* Убираем рамку */
+    padding: 10px 15px; /* Внутренние отступы кнопок */
+    border-radius: 5px; /* Скругленные углы */
+    cursor: pointer; /* Указатель при наведении */
+    transition: background-color 0.3s; /* Плавный переход фона */
+    text-decoration: none;
+}
 
-        /* Стиль кнопки сайта */
-        #home {
-            background-color: #645CAA; /* Фиолетовый фон кнопки */
-            color: #fff; /* Белый текст */
-            text-decoration: none;
-            display: inline-block;
-            transition: transform 0.3s ease;
-            font-size: 20px;
-        }
+/* Стиль кнопки сайта */
+#home {
+    background-color: #645CAA; /* Фиолетовый фон кнопки */
+    color: #fff; /* Белый текст */
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 20px;
+}
 
-        /* увеличения кнопки домой при наведении */
-        .home-button:hover {
-          transform: scale(1.2); /* Увеличение на 10% при наведении */
-        }
+/* увеличения кнопки домой при наведении */
+.home-button:hover {
+    transform: scale(1.2); /* Увеличение на 10% при наведении */
+}
 
-        /* Эффект при наведении на кнопки */
-        .header a:hover {
-            background-color: #BFACE0; /* Светло-Фиолетовый фон при наведении */
-        }
+/* Эффект при наведении на кнопки */
+.header a:hover {
+    background-color: #BFACE0; /* Светло-Фиолетовый фон при наведении */
+}
 
-        /* Контент страницы */
-        .content {
-            margin-top: 70px; /* Отступ сверху, чтобы контент не загораживался шапкой */
-            padding: 20px; /* Внутренние отступы контента */
-        }
+/* Контент страницы */
+.content {
+    margin-top: 70px; /* Отступ сверху, чтобы контент не загораживался шапкой */
+    padding: 20px; /* Внутренние отступы контента */
+}
+
+/* разметка страницы для формы встречи */
+.container {
+    margin-top: 160px; /* Отступ сверху, чтобы форма не загораживалась шапкой */
+    width: 100vw;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Контейнер для формы и заголовка */
+.form-container {
+    text-align: center;
+    width: 100%;
+    max-width: 600px; /* Максимальная ширина контейнера */
+}
+
+/* поля вода */
+.form-control {
+    font-size: 20px;
+    outline: none;
+    border: 1px solid EBC7E8;
+    border-radius: 5px;
+    padding: 0.2rem 0.5rem;
+    background-color: inherit; /* Прозрачное поле */
+    width: 100%; /* ширина полей ввода */
+    font-style: normal;
+    font-weight: 300;
+    display: block; /* подписи над полями ввода */
+    margin-bottom: 5px;
+    box-sizing: border-box; /* Чтобы padding не влиял на ширину */
+}
+
+/* текст над полями */
+label {
+    display: block;
+    margin-bottom: 5px;
+    width: 100%;
+    font-size: 20px; /* размер шрифта для текста */
+    font-weight: 500; /* насыщенность шрифта */
+    text-align: left;
+}
+
+/* кнопка Отправить */
+button {
+    text-align: center;
+    font-size: 20px; /* размер шрифта для текста */
+    outline: none; /* Убирает контур вокруг элемента */
+    border: 1px solid EBC7E8; /* граница 1 пиксель шириной, сплошная и цвета */
+    border-radius: 5px; /* Скругляет углы границы элемента */
+    padding: 0.2rem 0.5rem; /* внутренние отступы (padding) внутри элемента */
+    background-color: inherit; /* цвет фона элемента, наследуя его от родительского элемента (прозрачный) */
+    cursor: pointer; /* вид курсора при наведении на элемент */
+    font-weight: 500; /* насыщенность шрифта */
+    width: 30%; /* ширина элемента */
+    transition: background-color 0.3s ease; /*плавный переход (transition) для изменения цвета фона*/
+}
+
+/* кнопка Отправить при наведении меняет цвет */
+button:hover {
+    background-color: #BFACE0;
+}
