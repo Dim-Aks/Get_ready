@@ -20,7 +20,7 @@ body {
   transform: scale(1.2); /* Увеличение на 10% при наведении */
 }
 
-/* разметка страницы для формы */
+/* разметка страницы для формы логина и регистрации*/
 .container {
     width: 100vw;
     height: 60vh;
@@ -69,7 +69,7 @@ input {
     margin-top: 1.5rem; /* отступ сверху */
 }
 
-/* Общие стили для всех полей ввода */
+/* стиль для всех полей ввода логина и регистрации */
 .input-block input,
 .input-block select,
 .input-block textarea {
@@ -78,7 +78,7 @@ input {
     border-radius: 5px;
     padding: 0.2rem 0.5rem;
     background-color: inherit; /* Прозрачное поле */
-    width: 100%;
+    width: 100%;/* ширина полей ввода */
     font-weight: 300;
     box-sizing: border-box; /* Чтобы padding не влиял на ширину */
 }

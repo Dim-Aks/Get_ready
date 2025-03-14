@@ -1,22 +1,20 @@
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView
+from .forms import MeetingForm
+from .models import Meeting
 
-#from get_ready.meetings.forms import MeetingForm
-#from get_ready.meetings.models import Meeting
 
-
-def create_suggest(requests):
-    # error = ''
-    # if requests.method == 'POST':
-    #     form = MeetingForm(requests.POST)
-    #     if form.is_valid():
-    #         form.save()
-    #         return redirect('home')
-    #     else:
-    #         error = 'Форма былa заполнена неверно'
-    #
-    # form = MeetingForm()
-    # data ={'form': form,
-    #        'error': error}
-    return render(requests, 'meetings/suggest_an_appointment.html')
+def create_suggest(request):
+    if request.method == 'POST':
+        form = MeetingForm(request.POST)
+        if form.is_valid():
+            meeting = form.save(commit=False)
+            meeting.user = request.user if request.user.is_authenticated else None
+            meeting.save()
+            return redirect('check')
+    else:
+        form = MeetingForm()
+    
+    data ={'form': form}
+    return render(request, 'meetings/suggest_an_appointment.html', data)
 
