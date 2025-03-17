@@ -1,5 +1,7 @@
 from django.forms import ModelForm, DateInput, Textarea, TextInput
-from .models import Meeting
+from .models import Meeting, Comment
+from django import forms
+
 
 class MeetingForm(ModelForm):
     class Meta:
@@ -35,4 +37,16 @@ class MeetingForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Ну хотя бы пару дней на сборы, ну'
             }),
+        }
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('text',)
+        widgets = {
+            'text': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 2,
+                'placeholder': 'Ну что, собираемся?'
+            })
         }
