@@ -1,8 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="content">
-        <h1>На этой странице вы сможете чекнуть запланированные встречи со своими друзьями.</h1>
-        <h1>Скоро тут будет какой-то вид :)</h1>
-{% endblock %}
+ <div class="container-fluid events-container">
+    <h1 class="mb-4 ml-3">Все встречи</h1>
+    <div class="row g-4">
+        {% for meeting in meetings %}
+        <div class="col-md-5 col-lg-4">
+            <a href="{% url 'meeting_detail' meeting.pk %}" class="card-link">
+                <div class="card meeting-card" style="border-left: 8px solid {{ 'rgb(100, 92, 170)' }}">
+                    <div class="card-content">
+                        <h2 class="card-title">{{ meeting.reason_to_meet }}</h2>
+                        <p class="card-text">
+                            <strong>Чем займёмся:</strong> {{ meeting.what_to_do|truncatechars:100 }}<br>
+                            <strong>Место сбора: </strong> {{ meeting.meeting_place|truncatechars:100 }}<br>
+                            <strong>Когда: </strong> {{ meeting.date_meeting }}
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
     </div>
+</div>
+{% endblock %}
