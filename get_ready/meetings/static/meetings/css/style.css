@@ -2,8 +2,6 @@ body {
     background: radial-gradient(ellipse, #A084CA, #9370DB); /* Фиолетовый -> Светло-фиолетовый */
     margin: 0;
     font-family: Arial, sans-serif;
-    height: 100vh;
-    overflow: hidden;
 }
 
 /* Стиль для верхней шапки */
