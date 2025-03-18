@@ -125,7 +125,7 @@ button:hover {
 
 /* Основной контейнер событий */
 .events-container {
-    margin-left: 30%;  /* Сдвигаем весь блок влево */
+    margin-left: 30%;  /* Сдвигаем весь блок вправо */
     margin-top: 70px; /* Отступ сверху, чтобы контент не загораживался шапкой */
     max-width: 40%;   /* Уменьшаем максимальную ширину */
 }
@@ -137,6 +137,7 @@ button:hover {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 8px;
     overflow: hidden;
+    transform-origin: left center;
 }
 
 /* Внутреннее содержимое карточки */
@@ -149,6 +150,9 @@ button:hover {
     margin-left: 10px;
 }
 
+.mt-3 {
+    padding-top: 30px;
+}
 /* overflow */
 .detail-container {
     height: 100vh;
@@ -162,19 +166,16 @@ button:hover {
     padding-bottom: 20px;
 }
 
-/* Исправление отступов */
-.meeting-details {
-    margin: 0px 0;
-}
-
-.meeting-details h5 {
-    margin-bottom: 5px;  /* Уменьшаем отступ под заголовками */
+/* Название детали встречи */
+.meeting-details h4 {
+    margin-bottom: 4px;  /* Уменьшаем отступ под заголовками */
     font-size: 1.1rem;
 }
 
+/* Детали встречи */
 .meeting-details p {
     margin-bottom: 0px;
-    line-height: 0;
+    margin: 5; /* отступы у текста */
 }
 
 .card-text {
@@ -186,35 +187,12 @@ button:hover {
     padding: 1.25rem;  /* Стандартный padding вместо 20px */
 }
 
-/* Полоса прокрутки */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
-/* Анимация карточек */
-.meeting-card {
-    transform-origin: left center;
-}
-
 /* карточки при наведении увеличиваются */
 .meeting-card:hover {
     transform: scale(1.02) translateX(10px);
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     cursor: pointer;
+    border: 1px solid #645CAA;
 }
 
 /* Текст внутри карточек */
@@ -225,12 +203,10 @@ button:hover {
 
 /* Блок комментариев */
 .comments-section {
-    margin-left: 8%;  /* Сдвигаем комментарии вправо */
-    border-left: 2px solid #eee;
-    padding-left: 30px;
-    margin-top: 25px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
+    padding-left: 25px;
+    margin-top: 20px;
+    padding-top: 5px;
+    border: 1px solid #645CAA;
 }
 
 .comment-card {

@@ -8,10 +8,10 @@ def create_suggest(request):
     if request.method == 'POST':
         form = MeetingForm(request.POST)
         if form.is_valid():
-            meeting = form.save(commit=False)
-            meeting.user = request.user if request.user.is_authenticated else None
-            meeting.save()
-            return redirect('check')
+            meeting = form.save(commit=False) # Сохраняем форму без коммита в БД
+            meeting.author = request.user # Присваиваем автора
+            meeting.save()  # Теперь сохраняем в БД
+            return redirect('check') # Перенаправляем на страницу с созданными встречами
     else:
         form = MeetingForm()
     
