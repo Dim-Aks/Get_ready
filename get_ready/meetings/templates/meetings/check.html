@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'meetings/css/check.css' %}"/>
  <div class="container-fluid events-container">
     <h1 class="mb-4 ml-3">Вот, где хотели бы собраться твои друзья</h1>
     <div class="row g-4">

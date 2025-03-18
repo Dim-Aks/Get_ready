@@ -27,6 +27,7 @@ def view_meetings(request):
     page_obj = paginator.get_page(page_number)   # объект страницы
     return render(request, 'meetings/check.html', {'page_obj': page_obj})
 
+@login_required
 def meeting_detail(request, pk):
     meeting = get_object_or_404(Meeting, pk=pk)
     comments = meeting.comments.all().order_by('-created_date')
