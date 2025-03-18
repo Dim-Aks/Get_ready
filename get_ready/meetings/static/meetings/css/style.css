@@ -189,7 +189,7 @@ button:hover {
 
 /* карточки при наведении увеличиваются */
 .meeting-card:hover {
-    transform: scale(1.02) translateX(10px);
+    transform: scale(1.02) translateX(10px); /* карточки при наведении со сдвигом вправо */
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     cursor: pointer;
     border: 1px solid #645CAA;
@@ -228,6 +228,42 @@ button:hover {
     margin-bottom: 25px;
 }
 
+/* Пагинация */
+.pagination {
+    margin-top: 20x; /* Отступ сверху */
+    list-style: none; /* Убираем маркеры списка */
+    display: flex; /* Включаем flex-распределение */
+    justify-content: center; /* Центрируем элементы */
+    gap: 5px; /* Расстояние между элементами */
+}
+
+/* Цвет пагинатора выбранной страницы */
+.page-item.active .page-link {
+    background-color: #BFACE0;
+    border-color: #BFACE0;
+}
+
+/* Кнопки пагинации */
+.page-link {
+    color: #000000;
+    font-size: 20px; /* размер шрифта для текста */
+    font-weight: 500; /* насыщенность шрифта */
+    border: 1px solid EBC7E8; /* граница 1 пиксель шириной, сплошная и цвета */
+    border-radius: 5px; /* Скругляет углы границы элемента */
+    text-align: center;
+    padding: 0.2rem 0.5rem; /* внутренние отступы (padding) внутри элемента */
+    background-color: inherit; /* цвет фона элемента, наследуя его от родительского элемента (прозрачный) */
+    width: 25%; /* ширина элемента */
+    transition: background-color 0.3s ease; /*плавный переход (transition) для изменения цвета фона*/
+    text-decoration: none;
+}
+
+/* Рекация кнопки пагинации при наведении */
+.page-link:hover {
+    color: #645CAA;
+    background-color: #BFACE0;
+}
+
 /* Адаптация для мобильных */
 @media (max-width: 768px) {
     .events-container {
@@ -243,5 +279,14 @@ button:hover {
 
     .card-content {
         padding: 15px;
+    }
+
+    .col-md-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .pagination {
+        flex-wrap: wrap;
     }
 }

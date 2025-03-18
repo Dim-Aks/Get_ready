@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
  <div class="container-fluid events-container">
     <h1 class="mb-4 ml-3">Вот, где хотели бы собраться твои друзья</h1>
     <div class="row g-4">
-        {% for meeting in meetings %}
+        {% for meeting in page_obj %}
         <div class="col-md-5 col-lg-4">
             <a href="{% url 'meeting_detail' meeting.pk %}" class="card-link">
                 <div class="card meeting-card" style="border-left: 8px solid {{ 'rgb(100, 92, 170)' }}">
@@ -21,5 +22,35 @@
         </div>
         {% endfor %}
     </div>
+</div>
+
+<!-- Пагинация -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                    <i class="fas fa-chevron-left"></i>
+                    </a>
+                </li>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+                <!-- Кнопка назад -->
+                <li class="page-item {% if num == page_obj.number %}active{% endif %}">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                </li>
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <!-- Кнопка вперед -->
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
 </div>
 {% endblock %}
