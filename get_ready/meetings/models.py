@@ -9,7 +9,7 @@ class Meeting(models.Model):
     what_to_do = models.TextField('Чем займёмся')
     dress_code = models.CharField('Дресс-код', max_length=150)
     link = models.URLField('Ссылка на место, мероприятие', blank=True)
-    date_meeting = models.DateField('Когда собираемся (дд.мм.гггг)')
+    date_meeting = models.DateField('Когда собираемся')
     date_create = models.DateField(auto_now_add=True)
 
     def __str__(self):
