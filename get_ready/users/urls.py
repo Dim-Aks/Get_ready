@@ -1,6 +1,5 @@
 from django.urls import path
 from .views import RegisterUser, logout_user, LoginUser
-from django.views.generic.base import TemplateView
 
 app_name = "users"
 

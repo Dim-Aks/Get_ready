@@ -47,7 +47,7 @@ body {
 input {
     font-size: 20px;
     outline: none;
-    border: 1px solid EBC7E8;
+    border: 2px solid #645CAA;
     border-radius: 5px;
     padding: 0.2rem 0.5rem;
     background-color: inherit; /* прозрачные поля логина и пароля */
@@ -97,21 +97,33 @@ input {
 }
 
 /* кнопка войти, регистрация */
-button {
+button, a.button {
     font-size: 20px;
     outline: none;
-    border: 1px solid EBC7E8;
-    border-radius: 5px;
-    padding: 0.2rem 0.5rem; 
-    background-color: inherit; /* прозрачные поля */
-    cursor: pointer;
-    font-weight: 500;
-    width: 60%;
-    transition: background-color 0.3s ease;
+    border-radius: 5px; /* Скругляет углы границы элемента */
+    padding: 0.2rem 0.5rem;  /* внутренние отступы (padding) внутри элемента */
+    background-color: transparent; /* цвет фона элемента, наследуя его от родительского элемента (прозрачный) */
+    cursor: pointer; /* вид курсора при наведении на элемент */
+    font-weight: 500; /* насыщенность шрифта */
+    width: 60%; /* ширина элемента */
+    transition: all 0.3s ease; /*плавный переход (transition) для изменения цвета фона*/
+    font-family: inherit; /* Наследование шрифта от родителя */
+    text-decoration: none; /* Убираем подчеркивание у ссылки */
+    border: 2px solid #645CAA; /* граница сплошная и цвета */
 }
 
+/* Дополнительно для кнопки регистрации */
+a.button {
+    text-align: center; /* Центрирование текста */
+    color: inherit; /* Наследование цвета текста */
+    width: 54.5%;
+    margin-top: 5px;
+    display: inline-block; /* Для правильного применения padding и width */
+}
+
+
 /* кнопка Войти при наведении меняет цвет */
-button:hover {
+button:hover, a.button:hover {
     background-color: #BFACE0;
 }
 
