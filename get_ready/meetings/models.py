@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Meeting(models.Model):
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     reason_to_meet = models.CharField('Повод для встречи', max_length=150)
