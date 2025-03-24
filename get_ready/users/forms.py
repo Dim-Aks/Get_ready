@@ -2,6 +2,18 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
 
+
+# Форма профиля пользователя
+class ProfileUserForm(forms.ModelForm):
+    username = forms.CharField(disabled=True, label='Имя пользователя', widget=forms.TextInput(attrs={'class': 'form-input'}))
+    email = forms.CharField(disabled=True, label='E-mail', widget=forms.TextInput(attrs={'class': 'form-input'}))
+    photo = forms.ImageField(label='Фоточка')
+
+    class Meta:
+        model = get_user_model()
+        fields = ['username', 'email', 'photo']
+
+
  # Форма регистрации
 class RegisterUserForm(UserCreationForm):
     username = forms.CharField(label='Имя пользователя', widget=forms.TextInput(attrs={'class':'form-input'}))

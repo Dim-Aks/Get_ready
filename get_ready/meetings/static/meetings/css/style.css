@@ -101,6 +101,50 @@ label {
     text-align: left;
 }
 
+/* форма профиля пользователя */
+.profile {
+    max-width: 600px;/* Максимальная ширина блока */
+    margin: 40px auto;
+    padding: 30px;
+}
+
+.profile h2, .form-container h2, .welcome-text {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    border: 1px solid #645CAA; /* Контур */
+    border-radius: 8px; /* Закруглённые углы */
+    padding: 10px;
+}
+
+.profile input, .profile textarea, .profile select {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    background-color: #BFACE0;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .profile {
+        margin: 20px 15px;
+        padding: 20px;
+    }
+
+    .profile h2 {
+        font-size: 1.5em;
+    }
+}
+
+/* Блоки с полями ввода */
+.input-block {
+    margin-bottom: 25px;
+    position: relative;
+}
+
 /* кнопка Отправить */
 button {
     text-align: center;
@@ -133,7 +177,6 @@ button:hover {
 .welcome-text {
     text-align: center;
     font-size: 1.6em;
-    color: #333;
     margin-bottom: 20px;
     font-family: Arial, sans-serif;
 }

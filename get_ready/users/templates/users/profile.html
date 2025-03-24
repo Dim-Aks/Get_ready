@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="profile">
+
+        <!--  Сохраняет название страницы, куда нужно будет вернуться -->
+        <input type="hidden" name="next" value="{{ next }}" />
+
+        <!-- Общие ошибки формы -->
+        <div class="form-error">{{ form.non_field_errors }}</div>
+        <h2>Профиль пользователя: {{ user.username }}</h2>
+        {% for f in form %}
+        <div class="input-block">
+            <label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>
+            {{ f }} <!-- Это заменит <input> -->
+            <div class="form-error">{{ f.errors }}</div> <!-- Блок ошибок для поля -->
+        </div>
+        {% endfor %}
+
+        <div class="button-block">
+            <button type="submit">Сохранить</button>
+        </div>
+        </div>
+    </form>
+{% endblock %}

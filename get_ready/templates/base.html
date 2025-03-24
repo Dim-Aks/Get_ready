@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'meetings/css/style.css' %}"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Собирайся!</title>
+    <title>{{ title }}</title>
 </head>
 <body>
     <div class="header">
@@ -17,7 +17,7 @@
         </div>
         <div class="auth-buttons">
             {% if user.is_authenticated %}
-            {{user.username}} | <a href="{% url 'users:logout' %}">Выйти</a>
+            <a class="btn btn-primary" href="{% url 'users:profile' %}">{{user.username}}</a> | <a href="{% url 'users:logout' %}">Выйти</a>
             {% else %}
             <a class="btn btn-primary" href="{% url 'users:login' %}">Войти</a> <a class="btn btn-primary" href="{% url 'users:register' %}">Регистрация</a>
             {% endif %}
