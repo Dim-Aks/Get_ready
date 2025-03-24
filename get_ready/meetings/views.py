@@ -11,6 +11,7 @@ def create_suggest(request):
         if form.is_valid():
             meeting = form.save(commit=False) # Сохраняем форму без комита в БД
             meeting.author = request.user # Присваиваем автора
+            meeting.reason_to_meet = meeting.reason_to_meet.capitalize()
             meeting.save()  # сохраняем в БД
             return redirect('check') # Перенаправляем на страницу с созданными встречами
     else:
