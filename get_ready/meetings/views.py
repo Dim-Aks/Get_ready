@@ -17,7 +17,8 @@ def create_suggest(request):
     else:
         form = MeetingForm()
     
-    data ={'form': form}
+    data ={'form': form,
+           'title': "Создание встречи",}
     return render(request, 'meetings/suggest_an_appointment.html', data)
 
 @login_required
@@ -26,7 +27,7 @@ def view_meetings(request):
     paginator = Paginator(meetings, 4)  # пагинатор по 4 элемента на страницу
     page_number = request.GET.get('page', 1)  # номер страницы из GET-параметра
     page_obj = paginator.get_page(page_number)   # объект страницы
-    return render(request, 'meetings/check.html', {'page_obj': page_obj})
+    return render(request, 'meetings/check.html', {'page_obj': page_obj, 'title': "Все встречи",})
 
 @login_required
 def meeting_detail(request, pk):
@@ -47,5 +48,6 @@ def meeting_detail(request, pk):
     return render(request, 'meetings/meeting_detail.html', {
         'meeting': meeting,
         'comments': comments,
-        'form': form
+        'form': form,
+        'title': "Детали встречи",
     })
