@@ -58,6 +58,13 @@ body {
     padding: 20px; /* Внутренние отступы контента */
 }
 
+/* разметка страницы для подтверждения смены пароля*/
+.content-pas {
+    text-align: center;
+    margin-top: 120px; /* Отступ сверху, чтобы контент не загораживался шапкой */
+    padding: 20px; /* Внутренние отступы контента */
+}
+
 /* разметка страницы для формы встречи */
 .container {
     margin-top: 160px; /* Отступ сверху, чтобы форма не загораживалась шапкой */
@@ -127,6 +134,12 @@ label {
     box-sizing: border-box;
 }
 
+.line {
+    border: none; /* Убираем стандартную границу */
+    border-top: 1px solid black; /* Добавляем чёрную границу */
+    margin: 20px 0; /* Внешние отступы для отступа от других элементов */
+}
+
 /* Адаптивность */
 @media (max-width: 768px) {
     .profile {
@@ -145,12 +158,19 @@ label {
     position: relative;
 }
 
-/* кнопка Отправить */
-button {
+/* кнопка Сменить пароль */
+.custom-button-pas {
+    display: inline-block;
+    text-decoration: none;
+    color: #000;
+}
+
+/* кнопка Отправить, Сменить пароль */
+button, .custom-button-pas  {
     text-align: center;
     font-size: 20px; /* размер шрифта для текста */
     outline: none; /* Убирает контур вокруг элемента */
-    border: 1px solid EBC7E8; /* граница 1 пиксель шириной, сплошная и цвета */
+    border: 1.9px solid #000; /* граница 1 пиксель шириной, сплошная и цвета */
     border-radius: 5px; /* Скругляет углы границы элемента */
     padding: 0.2rem 0.5rem; /* внутренние отступы (padding) внутри элемента */
     background-color: inherit; /* цвет фона элемента, наследуя его от родительского элемента (прозрачный) */
@@ -160,8 +180,8 @@ button {
     transition: background-color 0.3s ease; /*плавный переход (transition) для изменения цвета фона*/
 }
 
-/* кнопка Отправить при наведении меняет цвет */
-button:hover {
+/* кнопка Отправить, Сменить пароль при наведении меняет цвет */
+button:hover, .custom-button-pas:hover {
     background-color: #BFACE0;
 }
 

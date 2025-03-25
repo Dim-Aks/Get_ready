@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth import get_user_model
 
 
@@ -7,11 +7,10 @@ from django.contrib.auth import get_user_model
 class ProfileUserForm(forms.ModelForm):
     username = forms.CharField(disabled=True, label='Имя пользователя', widget=forms.TextInput(attrs={'class': 'form-input'}))
     email = forms.CharField(disabled=True, label='E-mail', widget=forms.TextInput(attrs={'class': 'form-input'}))
-    photo = forms.ImageField(label='Фоточка')
 
     class Meta:
         model = get_user_model()
-        fields = ['username', 'email', 'photo']
+        fields = ['username', 'email']
 
 
  # Форма регистрации
@@ -37,3 +36,10 @@ class RegisterUserForm(UserCreationForm):
         if User.objects.filter(email=email).exists():
             raise forms.ValidationError("Такой E-mail уже существует!")
         return email
+
+
+# Форма смены пароля
+class UserPasswordChangeForm(PasswordChangeForm):
+    old_password = forms.CharField(label="Старый пароль", widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+    new_password1 = forms.CharField(label="Новый пароль", widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+    new_password2 = forms.CharField(label="Подтверждение пароля", widget=forms.PasswordInput(attrs={'class': 'form-input'}))
