@@ -52,7 +52,12 @@
 
             <div class="meeting-footer">
                 <span>Предложение от {{ meeting.date_create|date:"d.m.Y" }}</span>
+                {% if meeting.author.username == user.username %}
+                <a class="meeting-update" href="edit/"> Изменить детали встречи</a>
+                <a class="meeting-update" href="delete"> Удалить встречу</a>
+                {% else %}
                 <span>Собирает: {{ meeting.author.username }}</span>
+                {% endif %}
             </div>
         </div>
     </div>
