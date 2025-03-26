@@ -7,6 +7,6 @@ urlpatterns = [
     path('suggest/', MeetingCreateView.as_view(), name='suggest'),
     path('check/', view_meetings, name='check'),
     path('check/<int:pk>/', meeting_detail, name='meeting_detail'),
-    path('edit/<int:pk>/', UpdateMeeting.as_view(), name='edit_page'),
+    path('check/<int:pk>/edit/', UpdateMeeting.as_view(), name='edit_page'),
     path('check/<int:pk>/delete', DeleteMeeting.as_view(), name='meeting_delete')
 ]

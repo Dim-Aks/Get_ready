@@ -61,7 +61,7 @@ def meeting_detail(request, pk):
 
     if request.method == 'POST':
         form = CommentForm(request.POST)
-        if form.is_valid() and request.user.is_authenticated:
+        if form.is_valid():
             comment = form.save(commit=False)
             comment.meeting = meeting
             comment.author = request.user
