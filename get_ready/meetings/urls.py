@@ -8,4 +8,5 @@ urlpatterns = [
     path('suggest/', views.create_suggest, name='suggest'),
     path('check/', views.view_meetings, name='check'),
     path('check/<int:pk>/', views.meeting_detail, name='meeting_detail'),
+    path('edit/<int:pk>/', views.UpdateMeeting.as_view(), name='edit_page'),
 ]

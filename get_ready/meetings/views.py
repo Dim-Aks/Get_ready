@@ -1,6 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy
+from django.views.generic import UpdateView
+
 from .forms import MeetingForm, CommentForm
 from .models import Meeting
 
@@ -20,6 +23,14 @@ def create_suggest(request):
     data ={'form': form,
            'title': "Создание встречи",}
     return render(request, 'meetings/suggest_an_appointment.html', data)
+
+
+class UpdateMeeting(UpdateView):
+    model = Meeting
+    fields =['reason_to_meet', 'address', 'meeting_place', 'what_to_do', 'dress_code', 'link', 'date_meeting']
+    template_name = 'meetings/suggest_an_appointment.html'
+    success_url = reverse_lazy('check')
+
 
 @login_required
 def view_meetings(request):

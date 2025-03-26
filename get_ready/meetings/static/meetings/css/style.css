@@ -83,7 +83,7 @@ body {
 }
 
 /* поля вода */
-.form-control {
+.form-control, .form-container input, .form-container textarea {
     font-size: 20px;
     outline: none;
     border: 1px solid EBC7E8;
@@ -96,6 +96,10 @@ body {
     display: block; /* подписи над полями ввода */
     margin-bottom: 5px;
     box-sizing: border-box; /* Чтобы padding не влиял на ширину */
+}
+
+.form-container textarea{
+    height: 130px; /* Высота текстовой области */
 }
 
 /* текст над полями */
