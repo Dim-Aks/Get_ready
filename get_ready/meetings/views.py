@@ -1,9 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import UpdateView, CreateView, DeleteView
+from django.utils import timezone
+from django.views.generic import UpdateView, CreateView, DeleteView, ListView
 
 from .forms import MeetingForm, CommentForm
 from .models import Meeting
@@ -44,13 +44,35 @@ class DeleteMeeting(DeleteView):
 
 
 # все встречи
-@login_required
-def view_meetings(request):
-    meetings = Meeting.objects.all().order_by('date_meeting') # все встречи из базы
-    paginator = Paginator(meetings, 4)  # пагинатор по 4 элемента на страницу
-    page_number = request.GET.get('page', 1)  # номер страницы из GET-параметра
-    page_obj = paginator.get_page(page_number)   # объект страницы
-    return render(request, 'meetings/check.html', {'page_obj': page_obj, 'title': "Все встречи",})
+class MeetingListView(ListView):
+    model = Meeting
+    template_name = 'meetings/check.html'
+    context_object_name = 'meetings'
+    paginate_by = 4
+
+    # фильтрация встреч
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        filter_type = self.request.GET.get('filter', 'actual')
+        now = timezone.now()
+
+        if filter_type == 'author':
+            queryset = queryset.filter(author=self.request.user)
+        elif filter_type == 'past':
+            queryset = queryset.filter(date_meeting__lt=now)
+        elif filter_type == 'all':
+            pass
+        else:
+            queryset = queryset.filter(date_meeting__gte=now)
+
+        return queryset.order_by('date_meeting')
+
+    # добавляем дополнительные данные в контекст
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Запланированные встречи"
+        context['current_filter'] = self.request.GET.get('filter', 'actual')
+        return context
 
 
 # детали встречи + комменты

@@ -1,7 +1,7 @@
 /* Основной контейнер событий */
 .events-container {
     margin-left: 30%;  /* Сдвигаем весь блок вправо */
-    margin-top: 70px; /* Отступ сверху, чтобы контент не загораживался шапкой */
+    margin-top: 80px; /* Отступ сверху, чтобы контент не загораживался шапкой */
     max-width: 40%;   /* Уменьшаем максимальную ширину */
 }
 
@@ -11,6 +11,39 @@
     padding: 10px;
     border: 1px solid #645CAA; /* Контур */
     border-radius: 8px; /* Закруглённые углы */
+}
+
+/* Фильтры встреч */
+.filters-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: 1px solid #645CAA;
+    border-radius: 25px;
+    text-decoration: none;
+    color: #645CAA;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background-color: #645CAA;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(100, 92, 170, 0.3);
+}
+
+.filter-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
 }
 
 /* карточка встречи */
@@ -25,7 +58,7 @@
 
 /* Внутреннее содержимое карточки */
 .card-content {
-    padding: 10px 25px 10px 15px;  /* отступы */
+    padding: 5px 25px 5px 15px;  /* отступы */
 }
 
 /* Заголовок и текст */
