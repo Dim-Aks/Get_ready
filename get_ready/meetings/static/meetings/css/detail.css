@@ -53,6 +53,26 @@
     margin-bottom: 10px;
 }
 
+/* Кнопки Изменить, Удалить встречу, отправить */
+.meeting-update, .custom-link, .comment-form button {
+    text-decoration: none;
+    background: #BFACE0;
+    color: #645CAA;
+    font-size: 16px; /* размер шрифта для текста */
+    font-weight: 500; /* насыщенность шрифта */
+    transition: background-color 0.3s ease; /*плавный переход (transition) для изменения цвета фона*/
+    border-radius: 8px; /* Закруглённые углы */
+    border: 1px solid #645CAA;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 3px;
+}
+
+/* Реакция Изменить, Удалить встречу, отправить*/
+.meeting-update:hover, .custom-link:hover, .comment-form button:hover {
+    color: white;
+    background-color: #645CAA;
+}
+
 /* Секция комментариев */
 .comments-section {
     background: #A084CA;
@@ -83,17 +103,6 @@
     min-height: 30px;
 }
 
-/* Кнопка отправить */
-.comment-form button {
-    padding: 8px 20px;
-    background: #645CAA;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 18%;
-}
-
 /* Карточки комментариев */
 .comment-card {
     padding: 8px;
@@ -118,13 +127,4 @@
     justify-content: space-between; /* Распределение по краям */
     font-size: 0.9em;
     color: #666;
-}
-
-.custom-link {
-    color: #645CAA;
-    text-decoration: none;
-}
-
-.custom-link:hover {
-    text-decoration: underline;
 }
