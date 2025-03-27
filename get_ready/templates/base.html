@@ -16,7 +16,10 @@
 </head>
 <body>
     <div class="header">
-        <div class="btn site-name"><a id="home" href="{% url 'home' %}" class="home-button">Собирайся!</a></div>
+        <div class="btn site-name">
+            <img src="{% static 'img/logo.png' %}" class="header-logo" alt="Get Ready!">
+            <a id="home" href="{% url 'home' %}" class="home-button">Собирайся!</a>
+        </div>
         <div class="nav-buttons">
             <a class="btn btn-primary" href="{% url 'suggest' %}">Предложить встречу</a>
             <a class="btn btn-primary" href="{% url 'check' %}">Чекнуть встречи</a>
