@@ -15,7 +15,7 @@ body {
     display: flex; /* Используем flexbox для выравнивания элементов */
     justify-content: space-between; /* Размещаем элементы по краям */
     align-items: center; /* Выравнивание по центру по вертикали */
-    padding: 11px 20px; /* Внутренние отступы */
+    padding: 3px 15px; /* Внутренние отступы */
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Тень под шапкой */
     z-index: 1000; /* Убедимся, что шапка выше остальных элементов */
 }
@@ -32,6 +32,12 @@ body {
     text-decoration: none;
 }
 
+.btn.site-name {
+    display: flex; /* для выравнивания элементов внутри */
+    align-items: center; /* Выравнивание по центру по вертикали */
+    gap: 20px; /* Расстояние между лого и текстом */
+}
+
 /* Стиль кнопки сайта */
 #home {
     background-color: #645CAA; /* Фиолетовый фон кнопки */
@@ -40,6 +46,7 @@ body {
     display: inline-block;
     transition: transform 0.3s ease;
     font-size: 20px;
+    padding: 0px;
 }
 
 /* увеличения кнопки домой при наведении */
@@ -54,8 +61,11 @@ body {
 
 /* Лого страницы */
 .header-logo {
-    width: auto;
-    height: 20px; /* Сохраняем пропорции */
+    width: 60px; /* Увеличьте ширину изображения */
+    height: auto; /* Поддерживает пропорции изображения */
+    border-radius: 5px;
+    object-fit: contain;
+    flex-shrink: 0; /* Запрещаем уменьшение */
 }
 
 /* Контент страницы */
