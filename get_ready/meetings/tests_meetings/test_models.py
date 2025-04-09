@@ -4,6 +4,7 @@ from .conftest import date_meet
 from ..models import Comment, Meeting
 
 
+# тест модели встреч
 @pytest.mark.django_db
 def test_meeting_creation(user, meeting):
     assert Meeting.objects.count() == 1
@@ -16,6 +17,7 @@ def test_meeting_creation(user, meeting):
     assert meeting.date_meeting == date_meet
 
 
+# тест модели комментариев
 @pytest.mark.django_db
 def test_comment_creation(user, meeting, comment):
     assert Comment.objects.count() == 1
