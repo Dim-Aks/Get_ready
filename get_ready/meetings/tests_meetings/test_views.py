@@ -4,6 +4,7 @@ from django.urls import reverse
 from ..models import Meeting
 
 date_create_meet = date(2026,4,8)
+past_meeting = date(2020, 2,20)
 
 # тест отображения домашней страницы
 def test_home_page(client):
@@ -93,3 +94,85 @@ def test_meeting_delete(client, meeting, user):
     assert del_response.status_code == 302
     assert del_response.url == reverse('check')
     assert not Meeting.objects.filter(pk=meeting.pk)
+
+
+# тест страницы всех встреч с пагинацей и фильтрацией
+@pytest.mark.django_db
+def test_meeting_list_view(client, user, meeting_factory):
+    url = reverse('check')
+
+    # создаем тестовые встречи
+    meeting_factory.create_batch(3) # будущие встречи
+    meeting_factory.create_batch(4, date_meeting= past_meeting) # прошедшие встречи
+    meeting_factory.create_batch(2, author=user)  # встречи одного пользователя
+
+    response = client.get(url)
+    assert response.status_code == 302
+
+    client.force_login(user)
+
+    # все встречи (
+    get_response_all = client.get(url, {'filter': 'all'})
+    assert get_response_all.status_code == 200
+    assert len(get_response_all.context_data['paginator'].object_list) == 9
+    assert len(get_response_all.context['meetings']) == 4 # Проверка пагинации
+    assert get_response_all.context['title'] == "Запланированные встречи"
+
+    # будущие встречи
+    get_response_actual = client.get(url, {'filter': 'actual'})
+    assert get_response_actual.status_code == 200
+    assert len(get_response_actual.context_data['paginator'].object_list) == 5
+    assert len(get_response_actual.context['meetings']) == 4
+    assert get_response_actual.context['title'] == "Запланированные встречи"
+
+    # встречи пользователя
+    get_response_author = client.get(url, {'filter': 'author'})
+    assert get_response_author.status_code == 200
+    assert len(get_response_author.context['meetings']) == 2
+    assert get_response_author.context['title'] == "Запланированные встречи"
+
+    # прошедшие встречи
+    get_response_past = client.get(url, {'filter': 'past'})
+    assert get_response_past.status_code == 200
+    assert len(get_response_past.context['meetings']) == 4
+    assert get_response_past.context['title'] == "Запланированные встречи"
+
+
+# тест страницы деталей встреч
+@pytest.mark.django_db
+def test_meeting_detail(client, meeting, user):
+
+    url = reverse('meeting_detail', kwargs={'pk': meeting.pk})
+
+    response = client.post(url)
+    assert response.status_code == 302
+
+    client.force_login(user)
+
+    get_response_404 = client.get(reverse('meeting_detail', kwargs={'pk': 5}))
+    assert get_response_404.status_code == 404
+
+    get_response = client.get(url)
+    assert get_response.status_code == 200
+    assert get_response.context['title'] == "Детали встречи"
+
+
+# тест комментов на странице деталей
+@pytest.mark.django_db
+def test_meeting_detail_comment(client, user, meeting):
+    client.force_login(user)
+    url = reverse('meeting_detail', kwargs={'pk': meeting.pk})
+
+    # пустой коммент
+    data_null = {'text': ''}
+    response_null = client.post(url, data_null)
+    assert response_null.status_code == 200
+    assert 'form' in response_null.context
+    assert response_null.context['form'].errors
+
+    # тест коммент
+    data = {'text': 'Test comment'}
+    response = client.post(url, data)
+    assert response.status_code == 302
+    assert meeting.comments.count() == 1
+    assert meeting.comments.first().text == 'Test comment'
