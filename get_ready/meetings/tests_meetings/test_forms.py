@@ -1,10 +1,11 @@
 from .conftest import date_create_meet, past_meeting
 import pytest
 from django.forms import DateInput, TextInput, Textarea
-from ..forms import MeetingForm
-from ..models import Meeting
+from ..forms import MeetingForm, CommentForm
+from ..models import Meeting, Comment
 
 
+# тесты формы создания встречи
 class TestMeetingForm:
 
     def test_form_meta(self):
@@ -12,7 +13,7 @@ class TestMeetingForm:
         assert MeetingForm.Meta.model == Meeting
 
         # проверка списка полей
-        fields = [
+        field = [
             'reason_to_meet',
             'address',
             'meeting_place',
@@ -21,7 +22,7 @@ class TestMeetingForm:
             'link',
             'date_meeting'
         ]
-        assert list(MeetingForm.Meta.fields) == fields
+        assert MeetingForm.Meta.fields == field
 
     # проверка виджетов
     def test_form_widgets(self):
@@ -120,5 +121,42 @@ class TestMeetingForm:
         assert meeting_test.link == 'https://test.com'
 
 
+# тесты формы создания комментария к встрече
 class TestCommentForm:
-    pass
+
+    def test_form_meta(self):
+        # проверка привязки к модели
+        assert CommentForm.Meta.model == Comment
+
+        # проверка полей
+        field = ('text',)
+        assert CommentForm.Meta.fields == field
+
+        # проверка виджетов
+        widget = {
+            'text': Textarea(attrs={
+                'class': 'form-control',
+                'rows': 2,
+                'placeholder': 'Ну что, собираемся?'
+            })
+        }
+        assert CommentForm.Meta.widgets.__class__ == widget.__class__
+        assert CommentForm.Meta.widgets['text'].attrs == widget['text'].attrs
+        assert CommentForm.Meta.widgets['text'].attrs['class'] == 'form-control'
+        assert CommentForm.Meta.widgets['text'].attrs['rows'] == 2
+        assert CommentForm.Meta.widgets['text'].attrs['placeholder'] == 'Ну что, собираемся?'
+
+    # проверка валидности формы
+    @pytest.mark.parametrize('text,valid', [
+        ('Valid comment', True),
+        ('', False),  # пустой комментарий
+        ('   ', False),  # пробелы не считаются за содержимое
+        ('test' * 250, True),  # длинный комментарий
+    ])
+    @pytest.mark.django_db
+    def test_form_valid(self, text, valid):
+        form = CommentForm(data={'text': text})
+        assert form.is_valid() == valid
+
+
+
