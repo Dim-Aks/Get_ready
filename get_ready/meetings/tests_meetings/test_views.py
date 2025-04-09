@@ -1,10 +1,10 @@
-from datetime import date
 import pytest
 from django.urls import reverse
+
+from .conftest import date_create_meet, past_meeting
 from ..models import Meeting
 
-date_create_meet = date(2026,4,8)
-past_meeting = date(2020, 2,20)
+
 
 # тест отображения домашней страницы
 def test_home_page(client):
@@ -137,42 +137,43 @@ def test_meeting_list_view(client, user, meeting_factory):
     assert len(get_response_past.context['meetings']) == 4
     assert get_response_past.context['title'] == "Запланированные встречи"
 
+# тест страницы деталей встреч + комменты
+class TestMeetingDetail:
+    # тест страницы деталей встреч
+    @pytest.mark.django_db
+    def test_meeting_detail(self, client, meeting, user):
 
-# тест страницы деталей встреч
-@pytest.mark.django_db
-def test_meeting_detail(client, meeting, user):
+        url = reverse('meeting_detail', kwargs={'pk': meeting.pk})
 
-    url = reverse('meeting_detail', kwargs={'pk': meeting.pk})
+        response = client.post(url)
+        assert response.status_code == 302
 
-    response = client.post(url)
-    assert response.status_code == 302
+        client.force_login(user)
 
-    client.force_login(user)
+        get_response_404 = client.get(reverse('meeting_detail', kwargs={'pk': 5}))
+        assert get_response_404.status_code == 404
 
-    get_response_404 = client.get(reverse('meeting_detail', kwargs={'pk': 5}))
-    assert get_response_404.status_code == 404
-
-    get_response = client.get(url)
-    assert get_response.status_code == 200
-    assert get_response.context['title'] == "Детали встречи"
+        get_response = client.get(url)
+        assert get_response.status_code == 200
+        assert get_response.context['title'] == "Детали встречи"
 
 
-# тест комментов на странице деталей
-@pytest.mark.django_db
-def test_meeting_detail_comment(client, user, meeting):
-    client.force_login(user)
-    url = reverse('meeting_detail', kwargs={'pk': meeting.pk})
+    # тест комментов на странице деталей
+    @pytest.mark.django_db
+    def test_meeting_detail_comment(self, client, user, meeting):
+        client.force_login(user)
+        url = reverse('meeting_detail', kwargs={'pk': meeting.pk})
 
-    # пустой коммент
-    data_null = {'text': ''}
-    response_null = client.post(url, data_null)
-    assert response_null.status_code == 200
-    assert 'form' in response_null.context
-    assert response_null.context['form'].errors
+        # пустой коммент
+        data_null = {'text': ''}
+        response_null = client.post(url, data_null)
+        assert response_null.status_code == 200
+        assert 'form' in response_null.context
+        assert response_null.context['form'].errors
 
-    # тест коммент
-    data = {'text': 'Test comment'}
-    response = client.post(url, data)
-    assert response.status_code == 302
-    assert meeting.comments.count() == 1
-    assert meeting.comments.first().text == 'Test comment'
+        # тест коммент
+        data = {'text': 'Test comment'}
+        response = client.post(url, data)
+        assert response.status_code == 302
+        assert meeting.comments.count() == 1
+        assert meeting.comments.first().text == 'Test comment'

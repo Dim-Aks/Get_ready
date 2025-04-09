@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, date
 import factory
 import pytest
 from django.contrib.auth.models import User
@@ -6,6 +6,8 @@ from ..models import Comment, Meeting
 
 
 date_meet = datetime(2026, 4, 8, 15, 51, 39, 670011)
+date_create_meet = date(2026,4,8)
+past_meeting = date(2020, 2,20)
 
 # тестовый пользователь
 @pytest.fixture
