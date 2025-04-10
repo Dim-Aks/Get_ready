@@ -10,7 +10,7 @@ date_create_meet = date(2026,4,8)
 past_meeting = date(2020, 2,20)
 
 # тестовый пользователь
-@pytest.fixture
+@pytest.fixture()
 def user():
     return User.objects.create(
         username='testuser',

@@ -5,7 +5,6 @@ from .conftest import date_create_meet, past_meeting
 from ..models import Meeting
 
 
-
 # тест отображения домашней страницы
 def test_home_page(client):
     url = reverse('home')
