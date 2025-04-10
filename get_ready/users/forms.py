@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth import get_user_model
 
 
-# Форма профиля пользователя
+# Форма профиля пользователя в ЛК
 class ProfileUserForm(forms.ModelForm):
     username = forms.CharField(disabled=True, label='Имя пользователя', widget=forms.TextInput(attrs={'class': 'form-input'}))
     email = forms.CharField(disabled=True, label='E-mail', widget=forms.TextInput(attrs={'class': 'form-input'}))

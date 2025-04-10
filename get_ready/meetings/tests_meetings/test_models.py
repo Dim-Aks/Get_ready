@@ -4,6 +4,7 @@ from .conftest import date_meet
 from ..models import Comment, Meeting
 
 
+
 # тест модели встреч
 @pytest.mark.django_db
 def test_meeting_creation(user, meeting):
