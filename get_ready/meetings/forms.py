@@ -1,7 +1,11 @@
+from django.utils import timezone
+
+from django.core.exceptions import ValidationError
 from django.forms import ModelForm, DateInput, Textarea, TextInput
 from .models import Meeting, Comment
 
 
+# форма создания встречи
 class MeetingForm(ModelForm):
     class Meta:
         model = Meeting # указываем модель с которой работаем
@@ -39,6 +43,20 @@ class MeetingForm(ModelForm):
             }),
         }
 
+    # проверка даты, чтобы была не из прошлого
+    def clean_date_meeting(self):
+        date_meeting = self.cleaned_data.get('date_meeting')
+        if date_meeting < timezone.now().date():
+            raise ValidationError("Дата встречи не может быть в прошлом")
+        return date_meeting
+
+    # на заглавную букву Повод для встречи
+    def clean_date_capitalize(self):
+        reason_to_meet = self.cleaned_data.get('reason_to_meet')
+        return reason_to_meet.capitalize()
+
+
+# форма создания комментария в деталях встречи
 class CommentForm(ModelForm):
     class Meta:
         model = Comment

@@ -22,15 +22,15 @@ class MeetingCreateView(LoginRequiredMixin, CreateView):
         context['title'] = "Создание встречи"
         return context
 
-    # добавляем автора и меняем на заглавную букву Повод для встречи
+    # добавляем автора для встречи
     def form_valid(self, form):
         form.instance.author = self.request.user
-        form.instance.reason_to_meet = form.cleaned_data['reason_to_meet'].capitalize()
+        # form.instance.reason_to_meet = form.cleaned_data['reason_to_meet'].capitalize()
         return super().form_valid(form)
 
 
 # изменение встречи
-class UpdateMeeting(UpdateView):
+class UpdateMeeting(LoginRequiredMixin, UpdateView):
     model = Meeting
     fields =['reason_to_meet', 'address', 'meeting_place', 'what_to_do', 'dress_code', 'link', 'date_meeting']
     template_name = 'meetings/suggest_an_appointment.html'
@@ -38,13 +38,13 @@ class UpdateMeeting(UpdateView):
 
 
 # удаление встречи
-class DeleteMeeting(DeleteView):
+class DeleteMeeting(LoginRequiredMixin, DeleteView):
     model = Meeting
     success_url = reverse_lazy('check')
 
 
 # все встречи
-class MeetingListView(ListView):
+class MeetingListView(LoginRequiredMixin, ListView):
     model = Meeting
     template_name = 'meetings/check.html'
     context_object_name = 'meetings'
