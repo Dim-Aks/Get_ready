@@ -1,7 +1,7 @@
 import pytest
 from django import forms
 from django.contrib.auth.models import User
-from ..forms import ProfileUserForm, RegisterUserForm, UserPasswordChangeForm
+from ..forms import ProfileUserForm
 
 
 # тестирование формы профиля пользователя в ЛК
@@ -30,6 +30,6 @@ class TestProfileUserForm:
 
     # тест на корректность данных в форме
     # @pytest.mark.django_db
-    # def test_form_data(self, user):
-    #
-    #     assert ProfileUserForm['username'] == 'testuser'
+    # def test_form_data(self):
+    #     pass
+        # assert ProfileUserForm['username'] == 'testuser'
