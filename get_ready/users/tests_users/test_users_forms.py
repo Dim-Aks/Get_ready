@@ -14,6 +14,7 @@ def user():
 
 
 # тестирование формы профиля пользователя в ЛК
+@pytest.mark.django_db
 class TestProfileUserForm:
 
     # тест класса мета
@@ -38,14 +39,12 @@ class TestProfileUserForm:
         assert email_form.widget.attrs['class'] == 'form-input'
 
     # тест на корректность данных в форме
-    @pytest.mark.django_db
     def test_form_data(self, user):
         form = ProfileUserForm(instance=user)
         assert form.initial['username'] == 'Test_user'
         assert form.initial['email'] == 'Test@mail.com'
 
     # тест на неизменяемость полей
-    @pytest.mark.django_db
     def test_disable_form(self):
 
         form = ProfileUserForm(data = {
@@ -57,6 +56,7 @@ class TestProfileUserForm:
         assert 'email' in form.errors
 
 # тестирование формы регистрации пользователя
+@pytest.mark.django_db
 class TestRegisterUserForm:
 
     # тест класса мета
@@ -88,7 +88,6 @@ class TestRegisterUserForm:
         assert password2_form.widget.attrs['class'] == 'form-input'
 
     # тест на уникальность email
-    @pytest.mark.django_db
     def test_unique_email(self, user):
         data = {'username':'new_user',
                 'email':'Test@mail.com',
@@ -99,7 +98,6 @@ class TestRegisterUserForm:
         assert 'email' in form_uniq.errors
         assert 'Такой E-mail уже существует!' in form_uniq.errors['email']
 
-    @pytest.mark.django_db
     @pytest.mark.parametrize('data,errors', [
     # пустые данные
     ({}, ['username', 'password1', 'password2']),
@@ -135,7 +133,6 @@ class TestRegisterUserForm:
         assert list(form.errors.keys()) == errors
 
     # тест успешного создания пользователя
-    @pytest.mark.django_db
     def test_register_user(self):
         data = {'username': 'new_user',
                 'email': 'new@mail.com',
@@ -153,6 +150,7 @@ class TestRegisterUserForm:
 
 
 # тест формы смены пароля
+@pytest.mark.django_db
 class TestUserPasswordChangeForm:
 
     # тест полей формы
@@ -177,7 +175,6 @@ class TestUserPasswordChangeForm:
         assert new_password2.widget.attrs['class'] == 'form-input'
 
     # тест изменения пароля
-    @pytest.mark.django_db
     def test_password_change_form(self, user):
         data = {'old_password':'Password',
                 'new_password1':'NewSecurePass123!',
@@ -187,7 +184,6 @@ class TestUserPasswordChangeForm:
         form.save()
         assert user.check_password('NewSecurePass123!')
 
-    @pytest.mark.django_db
     @pytest.mark.parametrize("old_pass, new_pass1, new_pass2, errors", [
         # неверный старый пароль
         ('password', 'NewPass123!', 'NewPass123!', ['old_password']),

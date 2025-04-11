@@ -122,6 +122,7 @@ class TestMeetingForm:
 
 
 # тесты формы создания комментария к встрече
+@pytest.mark.django_db
 class TestCommentForm:
 
     def test_form_meta(self):
@@ -153,7 +154,6 @@ class TestCommentForm:
         ('   ', False),  # пробелы не считаются за содержимое
         ('test' * 250, True),  # длинный комментарий
     ])
-    @pytest.mark.django_db
     def test_form_valid(self, text, valid):
         form = CommentForm(data={'text': text})
         assert form.is_valid() == valid

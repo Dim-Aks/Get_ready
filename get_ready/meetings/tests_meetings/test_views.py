@@ -31,6 +31,7 @@ def test_meeting_create_view(client, user):
     get_response = client.get(url)
     assert get_response.status_code == 200
     assert get_response.context['title'] == "Создание встречи"
+    assert 'csrfmiddlewaretoken' in get_response.content.decode()
 
     # POST-запрос с валидными данными
     data = {
@@ -60,6 +61,7 @@ def test_meeting_update_view(client, user, meeting):
 
     get_response = client.get(url)
     assert get_response.status_code == 200
+    assert 'csrfmiddlewaretoken' in get_response.content.decode()
 
     data = {
         'reason_to_meet': 'test update reason_to_meet',
@@ -160,6 +162,7 @@ class TestMeetingDetail:
         get_response = client.get(url)
         assert get_response.status_code == 200
         assert get_response.context['title'] == "Детали встречи"
+        assert 'csrfmiddlewaretoken' in get_response.content.decode()
 
 
     # тест комментов на странице деталей
