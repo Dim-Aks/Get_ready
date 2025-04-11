@@ -22,6 +22,7 @@ def test_meeting_create_view(client, user):
     # Неавторизованный пользователь
     response = client.get(url)
     assert response.status_code == 302 # Редирект на страницу входа
+    assert reverse('users:login') in response.url
 
     # типо залогинился
     client.force_login(user)
@@ -53,6 +54,7 @@ def test_meeting_update_view(client, user, meeting):
     # Неавторизованный пользователь
     response = client.get(url)
     assert response.status_code == 302
+    assert reverse('users:login') in response.url
 
     client.force_login(user)
 
@@ -86,6 +88,7 @@ def test_meeting_delete(client, meeting, user):
 
     response = client.post(url)
     assert response.status_code == 302
+    assert reverse('users:login') in response.url
 
     client.force_login(user)
 
@@ -107,6 +110,7 @@ def test_meeting_list_view(client, user, meeting_factory):
 
     response = client.get(url)
     assert response.status_code == 302
+    assert reverse('users:login') in response.url
 
     client.force_login(user)
 
@@ -146,6 +150,7 @@ class TestMeetingDetail:
 
         response = client.post(url)
         assert response.status_code == 302
+        assert reverse('users:login') in response.url
 
         client.force_login(user)
 

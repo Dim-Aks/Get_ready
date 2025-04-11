@@ -6,7 +6,6 @@ from ..forms import ProfileUserForm, RegisterUserForm, UserPasswordChangeForm
 
 # тестовый пользователь
 @pytest.fixture
-@pytest.mark.django_db
 def user():
     return User.objects.create_user(
         username='Test_user',
