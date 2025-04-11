@@ -3,8 +3,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.urls import reverse, reverse_lazy
 
-from ..forms import RegisterUserForm
-from ..views import ProfileUser, LoginUser, RegisterUser
+from ..forms import RegisterUserForm, UserPasswordChangeForm
+from ..views import ProfileUser, LoginUser, RegisterUser, UserPasswordChange
 
 
 # тестовый пользователь
@@ -156,3 +156,75 @@ class TestLogoutUser:
         assert response.status_code == 302
         assert response.url == reverse('home')
         assert '_auth_user_id' not in client.session
+
+
+# тест страницы изменения пароля
+@pytest.mark.django_db
+class TestUserPasswordChange:
+
+    # тест атрибутов
+    def test_view_class_attributes(self):
+        assert UserPasswordChange.template_name == 'users/password_change.html'
+        assert UserPasswordChange.extra_context == {'title': "Изменение пароля"}
+        assert UserPasswordChange.form_class.__name__ == 'UserPasswordChangeForm'
+        assert UserPasswordChange.success_url == reverse_lazy("users:password_change_done")
+
+    # тест представления страницы
+    def test_view_pas_change_page(self, client, user):
+        client.force_login(user)
+        response = client.get(reverse('users:password_change'))
+        assert response.status_code == 200
+        assert response.context['title'] == 'Изменение пароля'
+        assert isinstance(response.context['form'], UserPasswordChangeForm)
+        assert 'users/password_change.html' in [t.name for t in response.templates]
+
+    # тест изменения пароля
+    def test_pas_change(self, client, user):
+        client.force_login(user)
+        data = {'old_password': 'Password',
+                'new_password1': 'NewSecurePass123!',
+                'new_password2': 'NewSecurePass123!'}
+        response = client.post(reverse('users:password_change'), data)
+        user.refresh_from_db()
+        assert user.check_password('NewSecurePass123!')
+        assert response.status_code == 302
+        assert response.url == '/users/password-change/done/'
+        assert '_auth_user_id' in client.session
+
+    # тест проверки вводимых паролей
+    @pytest.mark.parametrize("old_pass, new_pass1, new_pass2, errors", [
+        # неверный старый пароль
+        ('password', 'NewPass123!', 'NewPass123!', ['old_password']),
+        # пароли не совпадают
+        ('Password', 'NewPass123!', 'DifferentPass123!', ['new_password2']),
+        # слишком короткий пароль
+        ('Password', 'short', 'short', ['new_password2']),
+        # пустые поля
+        ('', '', '', ['old_password', 'new_password1', 'new_password2']),
+        # слишком простой пароль
+        ('Password', '12345678', '12345678', ['new_password2']),
+    ])
+    def test_password_valid(self, old_pass, new_pass1, new_pass2, errors, user, client):
+        client.force_login(user)
+        data = {
+            'old_password': old_pass,
+            'new_password1': new_pass1,
+            'new_password2': new_pass2
+        }
+        response = client.post(reverse('users:password_change'), data)
+        assert response.status_code == 200
+        assert list(response.context['form'].errors.keys()) == errors
+
+    # тест CSRF-токена
+    def test_csrf_token_in_form(self, client, user):
+        client.force_login(user)
+        response = client.get(reverse('users:password_change'))
+        assert 'csrfmiddlewaretoken' in response.content.decode()
+
+    # тест страницы подтверждения изменения пароля
+    def test_password_change_done(self, client, user):
+        client.force_login(user)
+        response = client.get(reverse('users:password_change_done'))
+        assert response.status_code == 200
+        assert response.context['view'].title == 'Пароль успешно изменен'
+        assert response.template_name == ['users/password_change_done.html']
