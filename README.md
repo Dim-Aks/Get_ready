@@ -1,4 +1,4 @@
-# Get_ready
+# Get_ready!
 A website for friends who want to see each other more often.
 On the Get Together! website, registered friends can create slots for their desired meetings.
 In the slots, they can specify: date, place, dress code, and even attach a link to the event, as well as schedule the event or give a detailed description of it.
