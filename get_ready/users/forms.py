@@ -29,7 +29,7 @@ class RegisterUserForm(UserCreationForm):
             'email': forms.TextInput(attrs={'class': 'form-input'}),
         }
     
-    # Проверка пароля на уникальность
+    # Проверка email на уникальность
     def clean_email(self):
         User = get_user_model()
         email = self.cleaned_data['email']
