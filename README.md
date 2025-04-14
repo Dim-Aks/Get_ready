@@ -38,6 +38,7 @@ There is no limit to the improvements, the plans include: notifications to meeti
 - pytest-django==4.11.1
 - sqlparse==0.5.3
 - tzdata==2025.1
+- python-dotenv==1.1.0
 
  # 🛠 Установка
 
