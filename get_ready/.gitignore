@@ -57,7 +57,7 @@ db.sqlite3-journal
 
 __pypackages__/
 
-.env
+get_ready/.env
 .venv
 env/
 venv/
