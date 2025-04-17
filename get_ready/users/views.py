@@ -12,11 +12,11 @@ from django.views.generic import CreateView, UpdateView
 class ProfileUser(LoginRequiredMixin, UpdateView):
     model = get_user_model()
     form_class = ProfileUserForm
-    template_name = 'users/profile.html'
-    extra_context = {'title': "Профиль пользователя"}
+    template_name = "users/profile.html"
+    extra_context = {"title": "Профиль пользователя"}
 
     def get_success_url(self):
-        return reverse_lazy('users:profile', args=[self.request.user.pk])
+        return reverse_lazy("users:profile", args=[self.request.user.pk])
 
     def get_object(self, queryset=None):
         return self.request.user
@@ -25,22 +25,22 @@ class ProfileUser(LoginRequiredMixin, UpdateView):
 # Авторизация
 class LoginUser(LoginView):
     form_class = AuthenticationForm
-    template_name = 'users/login.html'
-    extra_context = {'title': 'Авторизация'}
+    template_name = "users/login.html"
+    extra_context = {"title": "Авторизация"}
 
 
 # Регистрация
 class RegisterUser(CreateView):
     form_class = RegisterUserForm
-    template_name = 'users/register.html'
-    extra_context = {'title': "Регистрация"}
-    success_url = reverse_lazy('users:login')
+    template_name = "users/register.html"
+    extra_context = {"title": "Регистрация"}
+    success_url = reverse_lazy("users:login")
 
 
 # Выход из учётки
 def logout_user(request):
     logout(request)
-    return redirect('home')
+    return redirect("home")
 
 
 # Изменение пароля
@@ -48,4 +48,4 @@ class UserPasswordChange(PasswordChangeView):
     form_class = UserPasswordChangeForm
     success_url = reverse_lazy("users:password_change_done")
     template_name = "users/password_change.html"
-    extra_context = {'title': "Изменение пароля"}
+    extra_context = {"title": "Изменение пароля"}

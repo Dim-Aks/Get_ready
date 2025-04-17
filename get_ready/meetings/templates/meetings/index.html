@@ -4,203 +4,204 @@
     <title>{{ title }}</title>
 </head>
 {% block content %}
-        <div class="slider-container">
-        <h1 class="welcome-text">Добро пожаловать на сайт, где друзья могут предлагать друг другу собраться вместе
-            провести время, в удобной форме, а также обсуждать детали будущих встреч и всё в одном месте!</h1>
-        <p class="preview-text">Ниже представлены слайды по использованию сайта, изучай и Собирайся!</p>
+<div class="slider-container">
+    <h1 class="welcome-text">Добро пожаловать на сайт, где друзья могут предлагать друг другу собраться вместе
+        провести время, в удобной форме, а также обсуждать детали будущих встреч и всё в одном месте!</h1>
+    <p class="preview-text">Ниже представлены слайды по использованию сайта, изучай и Собирайся!</p>
 
-        <div class="slider">
-            <div class="slides">
-                <!-- Добавьте свои изображения -->
-                <div class="slide">
-                    <img src="{% static 'meetings/image/1_Reg.png' %}" alt="Сначала нужно зарегистрироваться">
-                </div>
-                <div class="slide">
-                    <img src="{% static 'meetings/image/2_Login.png' %}" alt="Нужно авторизоваться">
-                </div>
-                <div class="slide">
-                    <img src="{% static 'meetings/image/3_Form.png' %}" alt="Предложи встретиться через форму">
-                </div>
-                <div class="slide">
-                    <img src="{% static 'meetings/image/4_Meetings.png' %}" alt="Следи за всеми встречами">
-                </div>
-                <div class="slide">
-                    <img src="{% static 'meetings/image/5_detail.png' %}" alt="Узнай детальнее о встрече, обсуди с друзьями">
-                </div>
-                <div class="slide">
-                    <img src="{% static 'meetings/image/6_End.png' %}" alt='"Собирайся!" поможет всё организовать'>
-                </div>
+    <div class="slider">
+        <div class="slides">
+            <!-- Добавьте свои изображения -->
+            <div class="slide">
+                <img src="{% static 'meetings/image/1_Reg.png' %}" alt="Сначала нужно зарегистрироваться">
             </div>
-
-            <button class="prev-btn">❮</button>
-            <button class="next-btn">❯</button>
-            <div class="slider-indicators" id="indicators"></div>
-        </div>
-    </div>
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <div class="modal-slider">
-                <div class="modal-slides" id="modalSlides"></div>
-                <button class="modal-prev-btn">❮</button>
-                <button class="modal-next-btn">❯</button>
+            <div class="slide">
+                <img src="{% static 'meetings/image/2_Login.png' %}" alt="Нужно авторизоваться">
             </div>
-            <div class="modal-indicators" id="modalIndicators"></div>
+            <div class="slide">
+                <img src="{% static 'meetings/image/3_Form.png' %}" alt="Предложи встретиться через форму">
+            </div>
+            <div class="slide">
+                <img src="{% static 'meetings/image/4_Meetings.png' %}" alt="Следи за всеми встречами">
+            </div>
+            <div class="slide">
+                <img src="{% static 'meetings/image/5_detail.png' %}"
+                     alt="Узнай детальнее о встрече, обсуди с друзьями">
+            </div>
+            <div class="slide">
+                <img src="{% static 'meetings/image/6_End.png' %}" alt='"Собирайся!" поможет всё организовать'>
+            </div>
         </div>
+
+        <button class="prev-btn">❮</button>
+        <button class="next-btn">❯</button>
+        <div class="slider-indicators" id="indicators"></div>
     </div>
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                // Элементы основного слайдера
-                const slider = document.querySelector('.slides');
-                const slides = document.querySelectorAll('.slide');
-                const prevBtn = document.querySelector('.prev-btn');
-                const nextBtn = document.querySelector('.next-btn');
-                const indicatorsContainer = document.getElementById('indicators');
-                let currentIndex = 0;
-                let indicators = [];
+</div>
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <div class="modal-slider">
+            <div class="modal-slides" id="modalSlides"></div>
+            <button class="modal-prev-btn">❮</button>
+            <button class="modal-next-btn">❯</button>
+        </div>
+        <div class="modal-indicators" id="modalIndicators"></div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Элементы основного слайдера
+        const slider = document.querySelector('.slides');
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        const indicatorsContainer = document.getElementById('indicators');
+        let currentIndex = 0;
+        let indicators = [];
 
-                // Элементы модального окна
-                const modalOverlay = document.getElementById('modalOverlay');
-                const modalSlidesContainer = document.getElementById('modalSlides');
-                const modalIndicatorsContainer = document.getElementById('modalIndicators');
-                let modalIndicators = [];
-                let currentModalIndex = 0;
+        // Элементы модального окна
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalSlidesContainer = document.getElementById('modalSlides');
+        const modalIndicatorsContainer = document.getElementById('modalIndicators');
+        let modalIndicators = [];
+        let currentModalIndex = 0;
 
-                // =====================
-                // Основной слайдер
-                // =====================
+        // =====================
+        // Основной слайдер
+        // =====================
 
-                // Инициализация основного слайдера
-                function initMainSlider() {
-                    // Создание индикаторов
-                    slides.forEach((_, index) => {
-                        const indicator = document.createElement('div');
-                        indicator.className = 'indicator';
-                        indicator.addEventListener('click', () => goToSlide(index));
-                        indicatorsContainer.appendChild(indicator);
-                        indicators.push(indicator);
-                    });
-                    updateSlider();
-                }
-
-                // Обновление положения слайдера
-                function updateSlider() {
-                    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-                    indicators.forEach(ind => ind.classList.remove('active'));
-                    indicators[currentIndex].classList.add('active');
-                }
-
-                // Переход к конкретному слайду
-                function goToSlide(index) {
-                    currentIndex = index;
-                    updateSlider();
-                }
-
-                // Переключение слайдов
-                function nextSlide() {
-                    currentIndex = (currentIndex + 1) % slides.length;
-                    updateSlider();
-                }
-
-                function prevSlide() {
-                    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-                    updateSlider();
-                }
-
-                // =====================
-                // Модальное окно
-                // =====================
-
-                // Инициализация модального окна
-                function initModalContent() {
-                    modalSlidesContainer.innerHTML = '';
-
-                    // Клонируем все изображения
-                    slides.forEach((slide, index) => {
-                        const img = slide.querySelector('img').cloneNode();
-                        img.className = 'modal-slide';
-                        img.style.display = index === currentModalIndex ? 'block' : 'none';
-                        modalSlidesContainer.appendChild(img);
-                    });
-
-                    updateModalIndicators();
-                }
-
-                // Обновление индикаторов модального окна
-                function updateModalIndicators() {
-                    modalIndicatorsContainer.innerHTML = '';
-                    modalIndicators = [];
-
-                    slides.forEach((_, index) => {
-                        const indicator = document.createElement('div');
-                        indicator.className = `modal-indicator ${index === currentModalIndex ? 'active' : ''}`;
-                        indicator.addEventListener('click', () => switchModalSlide(index));
-                        modalIndicatorsContainer.appendChild(indicator);
-                        modalIndicators.push(indicator);
-                    });
-                }
-
-                // Переключение слайдов в модальном окне
-                function switchModalSlide(newIndex) {
-                    currentModalIndex = newIndex;
-                    modalSlidesContainer.querySelectorAll('.modal-slide').forEach((slide, index) => {
-                        slide.style.display = index === currentModalIndex ? 'block' : 'none';
-                    });
-                    modalIndicators.forEach(ind => ind.classList.remove('active'));
-                    modalIndicators[currentModalIndex].classList.add('active');
-                }
-
-                // Открытие модального окна
-                function openModal(index) {
-                    currentModalIndex = index;
-                    initModalContent();
-                    modalOverlay.style.display = 'flex';
-                }
-
-                // Закрытие модального окна
-                function closeModal() {
-                    modalOverlay.style.display = 'none';
-                    // Синхронизируем позицию с основным слайдером
-                    currentIndex = currentModalIndex;
-                    updateSlider();
-                }
-
-                // =====================
-                // Обработчики событий
-                // =====================
-
-                // Основной слайдер
-                prevBtn.addEventListener('click', prevSlide);
-                nextBtn.addEventListener('click', nextSlide);
-
-                // Открытие модального окна
-                slides.forEach((slide, index) => {
-                    slide.querySelector('img').addEventListener('click', () => openModal(index));
-                });
-
-                // Навигация в модальном окне
-                document.querySelector('.modal-prev-btn').addEventListener('click', () => {
-                    switchModalSlide((currentModalIndex - 1 + slides.length) % slides.length);
-                });
-
-                document.querySelector('.modal-next-btn').addEventListener('click', () => {
-                    switchModalSlide((currentModalIndex + 1) % slides.length);
-                });
-
-                // Закрытие модального окна
-                document.querySelector('.close-btn').addEventListener('click', closeModal);
-                modalOverlay.addEventListener('click', (e) => {
-                    if(e.target === modalOverlay || e.target.classList.contains('modal-slide')) closeModal();
-                });
-
-
-                // Автопереключение (раскомментировать при необходимости)
-                // setInterval(nextSlide, 5000);
-
-                // =====================
-                // Инициализация
-                // =====================
-                initMainSlider();
+        // Инициализация основного слайдера
+        function initMainSlider() {
+            // Создание индикаторов
+            slides.forEach((_, index) => {
+                const indicator = document.createElement('div');
+                indicator.className = 'indicator';
+                indicator.addEventListener('click', () => goToSlide(index));
+                indicatorsContainer.appendChild(indicator);
+                indicators.push(indicator);
             });
-        </script>
+            updateSlider();
+        }
+
+        // Обновление положения слайдера
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+            indicators.forEach(ind => ind.classList.remove('active'));
+            indicators[currentIndex].classList.add('active');
+        }
+
+        // Переход к конкретному слайду
+        function goToSlide(index) {
+            currentIndex = index;
+            updateSlider();
+        }
+
+        // Переключение слайдов
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateSlider();
+        }
+
+        // =====================
+        // Модальное окно
+        // =====================
+
+        // Инициализация модального окна
+        function initModalContent() {
+            modalSlidesContainer.innerHTML = '';
+
+            // Клонируем все изображения
+            slides.forEach((slide, index) => {
+                const img = slide.querySelector('img').cloneNode();
+                img.className = 'modal-slide';
+                img.style.display = index === currentModalIndex ? 'block' : 'none';
+                modalSlidesContainer.appendChild(img);
+            });
+
+            updateModalIndicators();
+        }
+
+        // Обновление индикаторов модального окна
+        function updateModalIndicators() {
+            modalIndicatorsContainer.innerHTML = '';
+            modalIndicators = [];
+
+            slides.forEach((_, index) => {
+                const indicator = document.createElement('div');
+                indicator.className = `modal-indicator ${index === currentModalIndex ? 'active' : ''}`;
+                indicator.addEventListener('click', () => switchModalSlide(index));
+                modalIndicatorsContainer.appendChild(indicator);
+                modalIndicators.push(indicator);
+            });
+        }
+
+        // Переключение слайдов в модальном окне
+        function switchModalSlide(newIndex) {
+            currentModalIndex = newIndex;
+            modalSlidesContainer.querySelectorAll('.modal-slide').forEach((slide, index) => {
+                slide.style.display = index === currentModalIndex ? 'block' : 'none';
+            });
+            modalIndicators.forEach(ind => ind.classList.remove('active'));
+            modalIndicators[currentModalIndex].classList.add('active');
+        }
+
+        // Открытие модального окна
+        function openModal(index) {
+            currentModalIndex = index;
+            initModalContent();
+            modalOverlay.style.display = 'flex';
+        }
+
+        // Закрытие модального окна
+        function closeModal() {
+            modalOverlay.style.display = 'none';
+            // Синхронизируем позицию с основным слайдером
+            currentIndex = currentModalIndex;
+            updateSlider();
+        }
+
+        // =====================
+        // Обработчики событий
+        // =====================
+
+        // Основной слайдер
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+
+        // Открытие модального окна
+        slides.forEach((slide, index) => {
+            slide.querySelector('img').addEventListener('click', () => openModal(index));
+        });
+
+        // Навигация в модальном окне
+        document.querySelector('.modal-prev-btn').addEventListener('click', () => {
+            switchModalSlide((currentModalIndex - 1 + slides.length) % slides.length);
+        });
+
+        document.querySelector('.modal-next-btn').addEventListener('click', () => {
+            switchModalSlide((currentModalIndex + 1) % slides.length);
+        });
+
+        // Закрытие модального окна
+        document.querySelector('.close-btn').addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', (e) => {
+            if(e.target === modalOverlay || e.target.classList.contains('modal-slide')) closeModal();
+        });
+
+
+        // Автопереключение (раскомментировать при необходимости)
+        // setInterval(nextSlide, 5000);
+
+        // =====================
+        // Инициализация
+        // =====================
+        initMainSlider();
+    });
+</script>
 {% endblock %}

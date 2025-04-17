@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <form method="POST">
-        {% csrf_token %}
-        <div class="profile">
+<form method="POST">
+    {% csrf_token %}
+    <div class="profile">
 
         <!--  Сохраняет название страницы, куда нужно будет вернуться -->
-        <input type="hidden" name="next" value="{{ next }}" />
+        <input type="hidden" name="next" value="{{ next }}"/>
 
         <!-- Общие ошибки формы -->
         <div class="form-error">{{ form.non_field_errors }}</div>
@@ -21,9 +21,9 @@
 
         <div class="button-block">
             <a class="custom-button-pas" href="{% url 'users:password_change' %}">Сменить пароль</a>
-<!--            <hr class="line">-->
-<!--            <button type="submit">Сохранить</button>-->
+            <!--            <hr class="line">-->
+            <!--            <button type="submit">Сохранить</button>-->
         </div>
-        </div>
-    </form>
+    </div>
+</form>
 {% endblock %}

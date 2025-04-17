@@ -4,9 +4,9 @@
 {% block content %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" type="text/css" href="{% static 'meetings/css/check.css' %}"/>
- <div class="container-fluid events-container">
+<div class="container-fluid events-container">
     <h1 class="mb-4 ml-3">Вот, где хотели бы собраться твои друзья</h1>
-     <div class="filters-container">
+    <div class="filters-container">
         <a href="?filter=author" class="filter-btn {% if current_filter == 'author' %}active{% endif %}">
             Мои встречи
         </a>
@@ -19,7 +19,7 @@
         <a href="?filter=all" class="filter-btn {% if current_filter == 'all' %}active{% endif %}">
             Все встречи
         </a>
-     </div>
+    </div>
     <div class="row g-4">
         {% for meeting in page_obj %}
         <div class="col-md-5 col-lg-4">
@@ -41,32 +41,32 @@
 </div>
 
 <!-- Пагинация -->
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            {% if page_obj.has_previous %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}&filter={{ current_filter }}">
-                    <i class="fas fa-chevron-left"></i>
-                    </a>
-                </li>
-            {% endif %}
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}&filter={{ current_filter }}">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+        </li>
+        {% endif %}
 
-            {% for num in page_obj.paginator.page_range %}
-                <!-- Кнопка назад -->
-                <li class="page-item {% if num == page_obj.number %}active{% endif %}">
-                    <a class="page-link" href="?page={{ num }}&filter={{ current_filter }}">{{ num }}</a>
-                </li>
-            {% endfor %}
+        {% for num in page_obj.paginator.page_range %}
+        <!-- Кнопка назад -->
+        <li class="page-item {% if num == page_obj.number %}active{% endif %}">
+            <a class="page-link" href="?page={{ num }}&filter={{ current_filter }}">{{ num }}</a>
+        </li>
+        {% endfor %}
 
-            {% if page_obj.has_next %}
-                <!-- Кнопка вперед -->
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.next_page_number }}&filter={{ current_filter }}">
-                        <i class="fas fa-chevron-right"></i>
-                    </a>
-                </li>
-            {% endif %}
-        </ul>
-    </nav>
+        {% if page_obj.has_next %}
+        <!-- Кнопка вперед -->
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}&filter={{ current_filter }}">
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
 </div>
 {% endblock %}

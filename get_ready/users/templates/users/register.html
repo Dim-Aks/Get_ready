@@ -3,46 +3,47 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <link rel="icon" type="image/png" href="/static/img/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/static/img/favicon.ico" />
-    <link rel="shortcut icon" href="/static/img/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Собирайся!" />
-    <link rel="manifest" href="/static/img/site.webmanifest" />
+    <link rel="icon" type="image/png" href="/static/img/favicon-96x96.png" sizes="96x96"/>
+    <link rel="icon" type="image/svg+xml" href="/static/img/favicon.ico"/>
+    <link rel="shortcut icon" href="/static/img/favicon.ico"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+    <meta name="apple-mobile-web-app-title" content="Собирайся!"/>
+    <link rel="manifest" href="/static/img/site.webmanifest"/>
     <link rel="stylesheet" type="text/css" href="{% static 'users/css/login.css' %}"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     <div class="header">
-    <div class="btn site-name"><a id="home" href="{% url 'home' %}" class="home-button">Собирайся!</a>
-    </div></div>
+        <div class="btn site-name"><a id="home" href="{% url 'home' %}" class="home-button">Собирайся!</a>
+        </div>
+    </div>
 </head>
 <body>
-    <div class="container">
-        <div class="filler"></div>
-        <div class="form-login">
-            <form method="POST">
-                {% csrf_token %}
+<div class="container">
+    <div class="filler"></div>
+    <div class="form-login">
+        <form method="POST">
+            {% csrf_token %}
 
-                <!--  Сохраняет название страницы, куда нужно будет вернуться -->     
-                <input type="hidden" name="next" value="{{ next }}" />
+            <!--  Сохраняет название страницы, куда нужно будет вернуться -->
+            <input type="hidden" name="next" value="{{ next }}"/>
 
-                <!-- Общие ошибки формы (например, неверный пароль) -->
-                <div class="form-error">{{ form.non_field_errors }}</div>
+            <!-- Общие ошибки формы (например, неверный пароль) -->
+            <div class="form-error">{{ form.non_field_errors }}</div>
 
-                {% for f in form %}
-                <div class="input-block">
-                    <label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>
-                    {{ f }} <!-- Это заменит <input> -->
-                    <div class="form-error">{{ f.errors }}</div> <!-- Блок ошибок для поля -->
-                </div>
-                {% endfor %}
+            {% for f in form %}
+            <div class="input-block">
+                <label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>
+                {{ f }} <!-- Это заменит <input> -->
+                <div class="form-error">{{ f.errors }}</div> <!-- Блок ошибок для поля -->
+            </div>
+            {% endfor %}
 
-                <div class="button-block">
-                    <button type="submit">Регистрация</button>
-                </div>
-            </form>
-        </div>
-        <div class="filler"></div>
+            <div class="button-block">
+                <button type="submit">Регистрация</button>
+            </div>
+        </form>
     </div>
+    <div class="filler"></div>
+</div>
 </html>

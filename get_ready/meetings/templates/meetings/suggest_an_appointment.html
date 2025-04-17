@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container">
-        <div class="form-container">
-            <h2>Предложи встретиться своим друзьям!</h2>
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Отправить</button>
-            </form>
-        </div>        
+<div class="container">
+    <div class="form-container">
+        <h2>Предложи встретиться своим друзьям!</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Отправить</button>
+        </form>
     </div>
-    {% endblock %}
+</div>
+{% endblock %}
