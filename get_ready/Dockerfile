@@ -37,7 +37,7 @@ RUN python manage.py collectstatic --noinput
 EXPOSE 8000
 
 # Команда для запуска сервера
-# CMD ["gunicorn", "myproject.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "get_ready.wsgi:application", "--bind", "0.0.0.0:8000"]
 
 # (для development)
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
