@@ -1,0 +1,397 @@
+body {
+    background: radial-gradient(ellipse, #A084CA, #9370DB); /* Фиолетовый -> Светло-фиолетовый */
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Стиль для верхней шапки */
+.header {
+    position: fixed; /* Фиксируем шапку в верхней части */
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #645CAA; /* Фиолетовый фон */
+    color: white; /* Белый текст */
+    display: flex; /* Используем flexbox для выравнивания элементов */
+    justify-content: space-between; /* Размещаем элементы по краям */
+    align-items: center; /* Выравнивание по центру по вертикали */
+    padding: 3px 15px; /* Внутренние отступы */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Тень под шапкой */
+    z-index: 1000; /* Убедимся, что шапка выше остальных элементов */
+}
+
+/* Стиль для кнопок */
+.header a {
+    background-color: #fff; /* Белый фон кнопок  */
+    color: #645CAA; /* Фиолетовый текст */
+    border: none; /* Убираем рамку */
+    padding: 10px 15px; /* Внутренние отступы кнопок */
+    border-radius: 5px; /* Скругленные углы */
+    cursor: pointer; /* Указатель при наведении */
+    transition: background-color 0.3s; /* Плавный переход фона */
+    text-decoration: none;
+}
+
+.btn.site-name {
+    display: flex; /* для выравнивания элементов внутри */
+    align-items: center; /* Выравнивание по центру по вертикали */
+    gap: 20px; /* Расстояние между лого и текстом */
+}
+
+/* Стиль кнопки сайта */
+#home {
+    background-color: #645CAA; /* Фиолетовый фон кнопки */
+    color: #fff; /* Белый текст */
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 20px;
+    padding: 0px;
+}
+
+/* увеличения кнопки домой при наведении */
+.home-button:hover {
+    transform: scale(1.2); /* Увеличение на 10% при наведении */
+}
+
+/* Эффект при наведении на кнопки */
+.header a:hover {
+    background-color: #BFACE0; /* Светло-Фиолетовый фон при наведении */
+}
+
+/* Лого страницы */
+.header-logo {
+    width: 60px; /* Увеличьте ширину изображения */
+    height: auto; /* Поддерживает пропорции изображения */
+    border-radius: 5px;
+    object-fit: contain;
+    flex-shrink: 0; /* Запрещаем уменьшение */
+}
+
+/* Контент страницы */
+.content {
+    margin-top: 70px; /* Отступ сверху, чтобы контент не загораживался шапкой */
+    padding: 20px; /* Внутренние отступы контента */
+}
+
+/* разметка страницы для подтверждения смены пароля*/
+.content-pas {
+    text-align: center;
+    margin-top: 120px; /* Отступ сверху, чтобы контент не загораживался шапкой */
+    padding: 20px; /* Внутренние отступы контента */
+}
+
+
+/* разметка страницы для формы встречи */
+.container {
+    margin-top: 160px; /* Отступ сверху, чтобы форма не загораживалась шапкой */
+    width: 100vw;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Контейнер для формы */
+.form-container {
+    text-align: center;
+    width: 100%;
+    max-width: 600px; /* Максимальная ширина контейнера */
+}
+
+/* поля вода */
+.form-control, .form-container input, .form-container textarea {
+    font-size: 20px;
+    outline: none;
+    border: 1px solid EBC7E8;
+    border-radius: 5px;
+    padding: 0.2rem 0.5rem;
+    background-color: inherit; /* Прозрачное поле */
+    width: 100%; /* ширина полей ввода */
+    font-style: normal;
+    font-weight: 300;
+    display: block; /* подписи над полями ввода */
+    margin-bottom: 5px;
+    box-sizing: border-box; /* Чтобы padding не влиял на ширину */
+}
+
+.form-container textarea{
+    height: 130px; /* Высота текстовой области */
+}
+
+/* текст над полями */
+label {
+    display: block;
+    margin-bottom: 5px;
+    width: 100%;
+    font-size: 20px; /* размер шрифта для текста */
+    font-weight: 500; /* насыщенность шрифта */
+    text-align: left;
+}
+
+/* форма профиля пользователя */
+.profile, .delete-meeting {
+    max-width: 600px;/* Максимальная ширина блока */
+    margin: 40px auto;
+    padding: 30px;
+}
+
+.profile h2, .form-container h2, .welcome-text, .delete-meeting p {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    border: 1px solid #645CAA; /* Контур */
+    border-radius: 8px; /* Закруглённые углы */
+    padding: 10px;
+}
+
+.profile input, .profile textarea, .profile select {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    background-color: #BFACE0;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.line {
+    border: none; /* Убираем стандартную границу */
+    border-top: 1px solid black; /* Добавляем чёрную границу */
+    margin: 20px 0; /* Внешние отступы для отступа от других элементов */
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .profile {
+        margin: 20px 15px;
+        padding: 20px;
+    }
+
+    .profile h2 {
+        font-size: 1.5em;
+    }
+}
+
+/* Блоки с полями ввода */
+.input-block {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+/* кнопка Сменить пароль */
+.custom-button-pas, .delete-meeting input {
+    display: inline-block;
+    text-decoration: none;
+    color: #000;
+}
+
+/* кнопка Отправить, Сменить пароль */
+button, .custom-button-pas, .delete-meeting input  {
+    text-align: center;
+    font-size: 20px; /* размер шрифта для текста */
+    outline: none; /* Убирает контур вокруг элемента */
+    border: 1.9px solid #000; /* граница 1 пиксель шириной, сплошная и цвета */
+    border-radius: 5px; /* Скругляет углы границы элемента */
+    padding: 0.2rem 0.5rem; /* внутренние отступы (padding) внутри элемента */
+    background-color: inherit; /* цвет фона элемента, наследуя его от родительского элемента (прозрачный) */
+    cursor: pointer; /* вид курсора при наведении на элемент */
+    font-weight: 500; /* насыщенность шрифта */
+    width: 30%; /* ширина элемента */
+    transition: background-color 0.3s ease; /*плавный переход (transition) для изменения цвета фона*/
+}
+
+/* кнопка Отправить, Сменить пароль при наведении меняет цвет */
+button:hover, .custom-button-pas:hover, .delete-meeting input:hover {
+    background-color: #BFACE0;
+}
+
+/* Стили для слайдера */
+.slider-container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    padding: 10px;
+    margin-top: 50px;
+}
+
+.welcome-text {
+    text-align: center;
+    font-size: 1.6em;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.preview-text {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.slider {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    cursor: zoom-in;
+}
+
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    width: 25px;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.1);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 10px;
+    border-radius: 3px;
+    transition: background 0.3s;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    opacity: 1;
+    background: rgba(191, 172, 224,0.6);
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+/* Модальное окно */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    cursor: zoom-out;
+}
+
+.modal-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    animation: zoomIn 0.3s ease;
+    display: none;
+}
+
+.modal-image.active {
+    display: block;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.5); }
+    to { transform: scale(1); }
+}
+
+.modal-content {
+    position: relative;
+    width: 90%;
+    height: 90%;
+}
+
+.modal-slider {
+    position: relative;
+    height: 100%;
+}
+
+.modal-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+}
+
+/* Кнопки модального окна */
+.modal-prev-btn, .modal-next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.1);
+    border: none;
+    color: white;
+    padding: 25px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+    width: 30px;
+}
+
+.modal-prev-btn:hover, .modal-next-btn:hover {
+    opacity: 1;
+    background: rgba(191, 172, 224,0.6);
+}
+
+.modal-prev-btn {
+    left: 10px;
+}
+
+.modal-next-btn {
+    right: 10px;
+}
+
+/* Индикаторы модального окна */
+.modal-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.modal-indicator, .indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-indicator.active, .indicator.active {
+    background-color: #645CAA;
+    transform: scale(1.2);
+}
+
+/* Индикаторы выбранных картинок */
+.slider-indicators {
+    display: flex;
+    position: absolute; /* Абсолютное позиционирование */
+    bottom: 5px; /* Размещаем под слайдером */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100; /* Поднимаем над слайдером */
+    gap: 5px;
+}

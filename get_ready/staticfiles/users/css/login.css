@@ -1,0 +1,133 @@
+body {
+    background: radial-gradient(ellipse, #A084CA, #9370DB); /* Фиолетовый -> Светло-фиолетовый */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Стиль кнопки сайта */
+#home {
+    padding: 11px 20px; /* Внутренние отступы */
+    color: #fff; /* Белый текст */
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 20px;
+}
+
+.home-button:hover {
+  transform: scale(1.2); /* Увеличение на 10% при наведении */
+}
+
+/* разметка страницы для формы логина и регистрации*/
+.container {
+    width: 100vw;
+    height: 60vh;
+    display: grid;
+    grid-template-columns: 30vw 40vw 30vw;
+}
+
+/* Форма для логина */
+.form-login, .form-pass {
+    margin: auto; /* по середине */
+    padding: 43px 33px; /* размер рамки */
+    font-size: 20px;
+    }
+
+.input-block {
+       margin-bottom: 1rem;
+}
+
+.input-block > label, .input-block > input {
+    width: 100%;
+}
+
+/* поля вода логина и пароля */
+input {
+    font-size: 20px;
+    outline: none;
+    border: 2px solid #645CAA;
+    border-radius: 5px;
+    padding: 0.2rem 0.5rem;
+    background-color: inherit; /* прозрачные поля логина и пароля */
+    width: 100%; /* ширина полей ввода */
+    font-style: normal;
+    font-weight: 300;
+}
+
+/* подписи над полями ввода */
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+/* центрирование кнопки войти/ регистрация */
+.button-block {
+    text-align: center;
+    margin-top: 1.5rem; /* отступ сверху */
+}
+
+/* стиль для всех полей ввода логина и регистрации */
+.input-block input,
+.input-block select,
+.input-block textarea {
+    font-size: 20px;
+    outline: none;  
+    border-radius: 5px;
+    padding: 0.2rem 0.5rem;
+    background-color: inherit; /* Прозрачное поле */
+    width: 100%;/* ширина полей ввода */
+    font-weight: 300;
+    box-sizing: border-box; /* Чтобы padding не влиял на ширину */
+}
+
+/* Стили для ошибок */
+.form-error {
+    color: #0e0d0d;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.form-error ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+/* кнопка войти, регистрация */
+button, a.button {
+    font-size: 20px;
+    outline: none;
+    border-radius: 5px; /* Скругляет углы границы элемента */
+    padding: 0.2rem 0.5rem;  /* внутренние отступы (padding) внутри элемента */
+    background-color: transparent; /* цвет фона элемента, наследуя его от родительского элемента (прозрачный) */
+    cursor: pointer; /* вид курсора при наведении на элемент */
+    font-weight: 500; /* насыщенность шрифта */
+    width: 60%; /* ширина элемента */
+    transition: all 0.3s ease; /*плавный переход (transition) для изменения цвета фона*/
+    font-family: inherit; /* Наследование шрифта от родителя */
+    text-decoration: none; /* Убираем подчеркивание у ссылки */
+    border: 2px solid #645CAA; /* граница сплошная и цвета */
+}
+
+/* Дополнительно для кнопки регистрации */
+a.button {
+    text-align: center; /* Центрирование текста */
+    color: inherit; /* Наследование цвета текста */
+    width: 54.5%;
+    margin-top: 5px;
+    display: inline-block; /* Для правильного применения padding и width */
+}
+
+
+/* кнопка Войти при наведении меняет цвет */
+button:hover, a.button:hover {
+    background-color: #BFACE0;
+}
+
+/* Стиль для скрытого поля next */
+input[type="hidden"] {
+    display: none;
+}

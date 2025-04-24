@@ -6,12 +6,12 @@ ENV PYTHONDONTWRITEBYTECODE 1  # Не создавать .pyc файлы
 ENV PYTHONUNBUFFERED 1         # Не буферизовать stdout/stderr
 
 # Устанавливаем системные зависимости для psycopg2
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    libpq-dev \
-    gcc \
-    python3-dev && \
-    rm -rf /var/lib/apt/lists/*
+# RUN apt-get update && \
+#     apt-get install -y --no-install-recommends \
+#     libpq-dev \
+#     gcc \
+#     python3-dev && \
+#     rm -rf /var/lib/apt/lists/*
 
 # Устанавливаем рабочую директорию внутри контейнера
 WORKDIR /app
@@ -34,10 +34,10 @@ RUN python manage.py collectstatic --noinput
 # USER myuser
 
 # Указываем порт, который будет прослушивать контейнер
-EXPOSE 8000
+EXPOSE 10000
 
 # Команда для запуска сервера
-CMD ["gunicorn", "get_ready.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "get_ready.wsgi:application", "--bind", "0.0.0.0:10000"]
 
 # (для development)
 # CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
