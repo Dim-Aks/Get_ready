@@ -33,7 +33,7 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 
 # ALLOWED_HOSTS = list(os.getenv("ALLOWED_HOSTS"))
 
-ALLOWED_HOSTS = ['get-ready-3rb0.onrender.com']
+ALLOWED_HOSTS = list(os.getenv("ALLOWED_HOSTS"))
 
 # Application definition
 
@@ -82,26 +82,28 @@ WSGI_APPLICATION = "get_ready.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
-
 DATABASES = {
-    "default": dj_database_url.config(
-        default=os.getenv('DATABASE_URL')
-    )
-    # {
-    #     "ENGINE": "django.db.backends.postgresql",
-    #     "NAME": os.getenv("POSTGRES_DB"),
-    #     "USER": os.getenv("POSTGRES_USER"),
-    #     "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
-    #     "HOST": os.getenv("HOST"),
-    #     "PORT": os.getenv("PORT"),
-    # }
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+        'USER': os.getenv("USER"),
+        'PASSWORD': os.getenv("PASSWORD"),
+    }
 }
+
+# DATABASES = {
+#     "default": dj_database_url.config(
+#         default=os.getenv('DATABASE_URL')
+#     )
+#     # {
+#     #     "ENGINE": "django.db.backends.postgresql",
+#     #     "NAME": os.getenv("POSTGRES_DB"),
+#     #     "USER": os.getenv("POSTGRES_USER"),
+#     #     "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+#     #     "HOST": os.getenv("HOST"),
+#     #     "PORT": os.getenv("PORT"),
+#     # }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
