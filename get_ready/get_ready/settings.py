@@ -33,7 +33,7 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 
 # ALLOWED_HOSTS = list(os.getenv("ALLOWED_HOSTS"))
 
-ALLOWED_HOSTS = list(os.getenv("ALLOWED_HOSTS"))
+ALLOWED_HOSTS = ['get-ready-3rb0.onrender.com']
 
 # Application definition
 
