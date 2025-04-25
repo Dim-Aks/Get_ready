@@ -1,10 +1,7 @@
 *.pyc
 __pycache__/
-# *.db
 media/
 .git/
 .DS_Store
 *.swp
 *.log
-# Очень важно, если миграции выполняются при запуске
-# */migrations/*
