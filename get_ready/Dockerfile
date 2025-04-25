@@ -26,6 +26,8 @@ RUN pip install --upgrade pip && \
 # Копируем весь код проекта
 COPY . .
 
+COPY db.sqlite3 .
+
 # Собираем статику , это упрощает развертывание, т.к. статика уже в образе
 RUN python manage.py collectstatic --noinput
 
