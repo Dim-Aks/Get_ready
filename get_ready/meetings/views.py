@@ -25,7 +25,7 @@ class MeetingCreateView(LoginRequiredMixin, CreateView):
     # добавляем автора для встречи
     def form_valid(self, form):
         form.instance.author = self.request.user
-        # form.instance.reason_to_meet = form.cleaned_data['reason_to_meet'].capitalize()
+        form.instance.reason_to_meet = form.cleaned_data['reason_to_meet'].capitalize()
         return super().form_valid(form)
 
 
