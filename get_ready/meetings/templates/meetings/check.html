@@ -42,6 +42,7 @@
 
 <!-- Пагинация -->
 <nav aria-label="Page navigation">
+    {% if page_obj.paginator.num_pages > 1 %}
     <ul class="pagination justify-content-center">
         {% if page_obj.has_previous %}
         <li class="page-item">
@@ -67,6 +68,7 @@
         </li>
         {% endif %}
     </ul>
+    {% endif %}
 </nav>
 </div>
 {% endblock %}
