@@ -44,11 +44,15 @@ body {
     min-width: 70px;
 }
 
-/* Сбрасываем стили для кнопок на маленьких экранах, что бы не ломалась вёрстка */
+/* Сбрасываем стили для кнопок на маленьких экранах, что бы не ломалась вёрстка и высоту header*/
 @media (max-width: 480px) {
     .header a {
         min-width: unset; /* сбросить значение */
         padding: 3px 5px;
+    }
+
+    .header {
+        height: 100px;
     }
 }
 
@@ -129,10 +133,9 @@ body {
     padding: 20px; /* Внутренние отступы контента */
 }
 
-
 /* разметка страницы для формы встречи */
 .container {
-    margin-top: 160px; /* Отступ сверху, чтобы форма не загораживалась шапкой */
+    margin-top: 100px; /* Отступ сверху, чтобы форма не загораживалась шапкой */
     width: 100vw;
     height: 60vh;
     display: flex;
@@ -209,7 +212,7 @@ label {
     margin: 20px 0; /* Внешние отступы для отступа от других элементов */
 }
 
-/* Адаптивность */
+/* Адаптивность profile*/
 @media (max-width: 768px) {
     .profile {
         margin: 20px 15px;
@@ -245,7 +248,7 @@ button, .custom-button-pas, .delete-meeting input  {
     background-color: inherit; /* цвет фона элемента, наследуя его от родительского элемента (прозрачный) */
     cursor: pointer; /* вид курсора при наведении на элемент */
     font-weight: 500; /* насыщенность шрифта */
-    width: 30%; /* ширина элемента */
+    width: auto; /* ширина элемента */
     transition: background-color 0.3s ease; /*плавный переход (transition) для изменения цвета фона*/
 }
 
@@ -479,6 +482,25 @@ button:hover, .custom-button-pas:hover, .delete-meeting input:hover {
         height: auto; /* Автоматическая высота */
         max-height: 100%; /* Максимальная высота 100% */
     }
+
+    .container {
+        width: auto;
+        margin-top: auto;
+    }
+
+    /* Контейнер для формы */
+    .form-container {
+        width: auto;
+        margin-top: auto;
+    }
+
+    .content-text {
+        margin-top: 90px; /* Отступ сверху, чтобы контент не загораживался шапкой */
+    }
+
+    /* поля вода */
+    .form-control, .form-container input, .form-container textarea {
+        font-size: 13.5px;
 }
 
 /* Для очень маленьких экранов (телефоны) */

@@ -65,7 +65,7 @@
     padding: 3px;
 }
 
-/* Реакция Изменить, Удалить встречу, отправить*/
+/* Изменить, Удалить встречу, отправить*/
 .meeting-update:hover, .custom-link:hover, .comment-form button:hover {
     color: white;
     background-color: #645CAA;
