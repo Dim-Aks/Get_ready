@@ -26,12 +26,13 @@ body {
     height: 60vh;
     display: grid;
     grid-template-columns: 30vw 40vw 30vw;
+    margin-top: 30px;
 }
 
 /* Форма для логина */
 .form-login, .form-pass {
     margin: auto; /* по середине */
-    padding: 43px 33px; /* размер рамки */
+    padding: auto; /* размер рамки */
     font-size: 20px;
     }
 
@@ -105,7 +106,7 @@ button, a.button {
     background-color: transparent; /* цвет фона элемента, наследуя его от родительского элемента (прозрачный) */
     cursor: pointer; /* вид курсора при наведении на элемент */
     font-weight: 500; /* насыщенность шрифта */
-    width: 60%; /* ширина элемента */
+    width: auto; /* ширина элемента */
     transition: all 0.3s ease; /*плавный переход (transition) для изменения цвета фона*/
     font-family: inherit; /* Наследование шрифта от родителя */
     text-decoration: none; /* Убираем подчеркивание у ссылки */
@@ -116,11 +117,10 @@ button, a.button {
 a.button {
     text-align: center; /* Центрирование текста */
     color: inherit; /* Наследование цвета текста */
-    width: 54.5%;
+    width: auto;
     margin-top: 5px;
     display: inline-block; /* Для правильного применения padding и width */
 }
-
 
 /* кнопка Войти при наведении меняет цвет */
 button:hover, a.button:hover {

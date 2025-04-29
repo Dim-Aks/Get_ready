@@ -1,10 +1,8 @@
-
 /* Контейнер общий*/
 .custom-container {
     max-width: 800px;/* Максимальная ширина блока */
     margin: 0 auto;
     padding: 20px;
-    margin-top: 60px;
 }
 
 /* Название мероприятия - контейнер */
@@ -67,7 +65,7 @@
     padding: 3px;
 }
 
-/* Реакция Изменить, Удалить встречу, отправить*/
+/* Изменить, Удалить встречу, отправить*/
 .meeting-update:hover, .custom-link:hover, .comment-form button:hover {
     color: white;
     background-color: #645CAA;
