@@ -1,0 +1,5 @@
+{
+  "meetings/tests_meetings/test_forms.py::TestMeetingForm": true,
+  "meetings/tests_meetings/test_forms.py::TestCommentForm": true,
+  "meetings/tests_meetings/test_views.py::TestMeetingDetail": true
+}

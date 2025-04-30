@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 
 import os
 from pathlib import Path
+
+# import dj_database_url
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -19,18 +21,13 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
-
+ALLOWED_HOSTS = ['get-ready-3rb0.onrender.com', 'localhost', '127.0.0.1', '0.0.0.0']
 
 # Application definition
 
@@ -47,6 +44,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -76,27 +74,30 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "get_ready.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
-
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("POSTGRES_DB"),
-        "USER": os.getenv("POSTGRES_USER"),
-        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
-        "HOST": os.getenv("HOST"),
-        "PORT": os.getenv("PORT"),
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
+# postgresql
+# DATABASES = {
+#     "default": dj_database_url.config(
+#         default=os.getenv('DATABASE_URL')
+#     )
+#     # {
+#     #     "ENGINE": "django.db.backends.postgresql",
+#     #     "NAME": os.getenv("POSTGRES_DB"),
+#     #     "USER": os.getenv("POSTGRES_USER"),
+#     #     "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+#     #     "HOST": os.getenv("HOST"),
+#     #     "PORT": os.getenv("PORT"),
+#     # }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
@@ -134,6 +135,8 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Абсолютный путь для сбора статики
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")] # Общая статика проекта
+# добавляет хэши к именам файлов (cache-busting) и сжимает файлы gzip
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-auto-field
 

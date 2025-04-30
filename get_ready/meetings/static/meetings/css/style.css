@@ -2,6 +2,9 @@ body {
     background: radial-gradient(ellipse, #A084CA, #9370DB); /* Фиолетовый -> Светло-фиолетовый */
     margin: 0;
     font-family: Arial, sans-serif;
+    /* перенос текста, если текст слишком длинный */
+    word-wrap: break-word;
+    overflow-x: hidden; /* Предотвращаем горизонтальную прокрутку */
 }
 
 /* Стиль для верхней шапки */
@@ -12,12 +15,17 @@ body {
     right: 0;
     background-color: #645CAA; /* Фиолетовый фон */
     color: white; /* Белый текст */
-    display: flex; /* Используем flexbox для выравнивания элементов */
-    justify-content: space-between; /* Размещаем элементы по краям */
+    display: flex; /* flexbox для выравнивания элементов */
+    justify-content: space-between; /* элементы по краям */
     align-items: center; /* Выравнивание по центру по вертикали */
     padding: 3px 15px; /* Внутренние отступы */
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Тень под шапкой */
     z-index: 1000; /* Убедимся, что шапка выше остальных элементов */
+    /* шрифт для лучшей читаемости на телефонах */
+    font-size: 15px;
+    /* Делаем шапку более адаптивной к небольшим экранам */
+    flex-wrap: wrap; /* Позволяем элементам переноситься на новую строку */
+    gap: 10px; /* отступ между элементами, когда они переносятся */
 }
 
 /* Стиль для кнопок */
@@ -30,6 +38,22 @@ body {
     cursor: pointer; /* Указатель при наведении */
     transition: background-color 0.3s; /* Плавный переход фона */
     text-decoration: none;
+    /* Уменьшаем шрифт для лучшей читаемости на телефонах */
+    font-size: 14px;
+    /* min-width чтобы кнопка не была слишком маленькой */
+    min-width: 70px;
+}
+
+/* Сбрасываем стили для кнопок на маленьких экранах, что бы не ломалась вёрстка и высоту header*/
+@media (max-width: 480px) {
+    .header a {
+        min-width: unset; /* сбросить значение */
+        padding: 3px 5px;
+    }
+
+    .header {
+        height: 100px;
+    }
 }
 
 .btn.site-name {
@@ -68,10 +92,38 @@ body {
     flex-shrink: 0; /* Запрещаем уменьшение */
 }
 
+/* Медиа-запрос для адаптации стилей на маленьких экранах */
+@media (max-width: 768px) {
+    .header {
+        /* Уменьшаем отступы для экономии места */
+        padding: 5px 10px;
+
+        /* Выравниваем элементы шапки по центру */
+        justify-content: center;
+        flex-direction: column; /* Располагаем элементы вертикально */
+        align-items: center; /* Центрируем элементы по горизонтали */
+    }
+
+    .btn.site-name {
+        /* Выравниваем элементы названия сайта по центру */
+        text-align: center;
+    }
+
+    /* Уменьшаем размер логотипа на маленьких экранах */
+    .header-logo {
+        width: 40px;
+    }
+
+    /* Уменьшаем шрифт названия сайта */
+    #home {
+        font-size: 20px;
+    }
+}
+
 /* Контент страницы */
-.content {
+.content-text {
     margin-top: 70px; /* Отступ сверху, чтобы контент не загораживался шапкой */
-    padding: 20px; /* Внутренние отступы контента */
+    padding: 10px; /* Внутренние отступы контента */
 }
 
 /* разметка страницы для подтверждения смены пароля*/
@@ -81,10 +133,9 @@ body {
     padding: 20px; /* Внутренние отступы контента */
 }
 
-
 /* разметка страницы для формы встречи */
 .container {
-    margin-top: 160px; /* Отступ сверху, чтобы форма не загораживалась шапкой */
+    margin-top: 100px; /* Отступ сверху, чтобы форма не загораживалась шапкой */
     width: 100vw;
     height: 60vh;
     display: flex;
@@ -161,7 +212,7 @@ label {
     margin: 20px 0; /* Внешние отступы для отступа от других элементов */
 }
 
-/* Адаптивность */
+/* Адаптивность profile*/
 @media (max-width: 768px) {
     .profile {
         margin: 20px 15px;
@@ -197,7 +248,7 @@ button, .custom-button-pas, .delete-meeting input  {
     background-color: inherit; /* цвет фона элемента, наследуя его от родительского элемента (прозрачный) */
     cursor: pointer; /* вид курсора при наведении на элемент */
     font-weight: 500; /* насыщенность шрифта */
-    width: 30%; /* ширина элемента */
+    width: auto; /* ширина элемента */
     transition: background-color 0.3s ease; /*плавный переход (transition) для изменения цвета фона*/
 }
 
@@ -212,12 +263,12 @@ button:hover, .custom-button-pas:hover, .delete-meeting input:hover {
     margin: 0 auto;
     position: relative;
     padding: 10px;
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 .welcome-text {
     text-align: center;
-    font-size: 1.6em;
+    font-size: 1.3em;
     margin-bottom: 20px;
     font-family: Arial, sans-serif;
 }
@@ -394,4 +445,71 @@ button:hover, .custom-button-pas:hover, .delete-meeting input:hover {
     transform: translateX(-50%);
     z-index: 100; /* Поднимаем над слайдером */
     gap: 5px;
+}
+
+/* Медиа-запрос для адаптации стилей на маленьких экранах */
+@media (max-width: 768px) {
+    .content {
+        margin-top: 60px; /* Уменьшаем отступ для шапки */
+    }
+
+    .slider-container {
+        max-width: 100%; /* Растягиваем на всю ширину */
+        padding: 5px; /* Уменьшаем отступы */
+        margin-top: 20px; /* Уменьшаем отступ */
+    }
+
+    .slide {
+        height: 300px; /* Уменьшаем высоту слайда */
+    }
+
+    /* модального окна */
+    .modal-content {
+        width: 95%; /* Увеличиваем ширину модального окна */
+        height: 95%; /* Увеличиваем высоту модального окна */
+        max-width: 95vw;  /* Использовать vw для ширины */
+        max-height: 95vh; /* Использовать vh для высоты */
+    }
+
+    /* Скрытие текста preview на маленьких экранах */
+    .preview-text {
+        display: none;
+    }
+
+    .modal-image {
+        width: auto;  /* Убедимся, что ширина масштабируется автоматически */
+        max-width: 100%; /* Максимальная ширина 100% */
+        height: auto; /* Автоматическая высота */
+        max-height: 100%; /* Максимальная высота 100% */
+    }
+
+    .container {
+        width: auto;
+        margin-top: auto;
+    }
+
+    /* Контейнер для формы */
+    .form-container {
+        width: auto;
+        margin-top: auto;
+    }
+
+    .content-text {
+        margin-top: 90px; /* Отступ сверху, чтобы контент не загораживался шапкой */
+    }
+
+    /* поля вода */
+    .form-control, .form-container input, .form-container textarea {
+        font-size: 13.5px;
+}
+
+/* Для очень маленьких экранов (телефоны) */
+@media (max-width: 480px) {
+    .content {
+        padding: 5px; /* Еще уменьшаем отступы */
+    }
+
+    .slide {
+        height: 200px; /* Еще уменьшаем высоту слайда */
+    }
 }

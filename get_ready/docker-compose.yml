@@ -2,13 +2,15 @@ services:
   # Сервис для веб-приложения Django
   web:
     build: .  # Собираем образ из Dockerfile в текущей директории
-    command: sh -c  "gunicorn get_ready.wsgi:application --bind 0.0.0.0:8000"  # python manage.py runserver 0.0.0.0:8000
+    command: sh -c  "gunicorn get_ready.wsgi:application --bind 0.0.0.0:10000"  # python manage.py runserver 0.0.0.0:8000
     volumes:
       - static_volume:/app/staticfiles # Монтируем volume для хранения статики
+      - db_data:/app/db.sqlite3
     ports:
-      - "8000:8000" # Пробрасываем порт 8000 на хост
+      - "10000:10000" # Пробрасываем порт 10000 на хост
     env_file:
       - .env  # Используем переменные окружения из файла .env
 
 volumes:
   static_volume:
+  db_data:
