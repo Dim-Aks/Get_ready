@@ -19,7 +19,7 @@ WORKDIR /app
 # Копируем файлы зависимостей
 COPY requirements.txt .
 
-# Устанавливаем необходимые пакеты для сборки (например, для psycopg2)
+# Устанавливаем необходимые пакеты для сборки
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
@@ -28,12 +28,8 @@ COPY . .
 
 COPY db.sqlite3 .
 
-# Собираем статику , это упрощает развертывание, т.к. статика уже в образе
+# Собираем статику, это упрощает развертывание, т.к. статика уже в образе
 RUN python manage.py collectstatic --noinput
-
-# Меняем пользователя на непривилегированного (если нужно, создайте этого пользователя)
-# RUN useradd -m myuser && chown -R myuser /app
-# USER myuser
 
 # Указываем порт, который будет прослушивать контейнер
 EXPOSE 10000
