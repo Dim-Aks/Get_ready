@@ -1,5 +1,5 @@
 {
-  "meetings/tests_meetings/test_forms.py::TestMeetingForm": true,
-  "meetings/tests_meetings/test_forms.py::TestCommentForm": true,
-  "meetings/tests_meetings/test_views.py::TestMeetingDetail": true
+  "meetings/tests_meetings/test_forms.py::TestMeetingForm::test_form_meta": true,
+  "meetings/tests_meetings/test_forms.py::TestMeetingForm::test_form_widgets": true,
+  "meetings/tests_meetings/test_forms.py::TestMeetingForm::test_form_valid": true
 }
